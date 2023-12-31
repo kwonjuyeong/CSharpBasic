@@ -1,0 +1,17 @@
+C:\Users\kjy1h\source\repos\HelloCsharpwin\HelloCsharpwin\bin\Debug\net8.0-windows\HelloCsharpwin.exe
+C:\Users\kjy1h\source\repos\HelloCsharpwin\HelloCsharpwin\bin\Debug\net8.0-windows\HelloCsharpwin.deps.json
+C:\Users\kjy1h\source\repos\HelloCsharpwin\HelloCsharpwin\bin\Debug\net8.0-windows\HelloCsharpwin.runtimeconfig.json
+C:\Users\kjy1h\source\repos\HelloCsharpwin\HelloCsharpwin\bin\Debug\net8.0-windows\HelloCsharpwin.dll
+C:\Users\kjy1h\source\repos\HelloCsharpwin\HelloCsharpwin\bin\Debug\net8.0-windows\HelloCsharpwin.pdb
+C:\Users\kjy1h\source\repos\HelloCsharpwin\HelloCsharpwin\obj\Debug\net8.0-windows\HelloCsharpwin.Calculator.resources
+C:\Users\kjy1h\source\repos\HelloCsharpwin\HelloCsharpwin\obj\Debug\net8.0-windows\HelloCsharpwin.csproj.GenerateResource.cache
+C:\Users\kjy1h\source\repos\HelloCsharpwin\HelloCsharpwin\obj\Debug\net8.0-windows\HelloCsharpwin.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kjy1h\source\repos\HelloCsharpwin\HelloCsharpwin\obj\Debug\net8.0-windows\HelloCsharpwin.AssemblyInfoInputs.cache
+C:\Users\kjy1h\source\repos\HelloCsharpwin\HelloCsharpwin\obj\Debug\net8.0-windows\HelloCsharpwin.AssemblyInfo.cs
+C:\Users\kjy1h\source\repos\HelloCsharpwin\HelloCsharpwin\obj\Debug\net8.0-windows\HelloCsharpwin.csproj.CoreCompileInputs.cache
+C:\Users\kjy1h\source\repos\HelloCsharpwin\HelloCsharpwin\obj\Debug\net8.0-windows\HelloCsharpwin.sourcelink.json
+C:\Users\kjy1h\source\repos\HelloCsharpwin\HelloCsharpwin\obj\Debug\net8.0-windows\HelloCsharpwin.dll
+C:\Users\kjy1h\source\repos\HelloCsharpwin\HelloCsharpwin\obj\Debug\net8.0-windows\refint\HelloCsharpwin.dll
+C:\Users\kjy1h\source\repos\HelloCsharpwin\HelloCsharpwin\obj\Debug\net8.0-windows\HelloCsharpwin.pdb
+C:\Users\kjy1h\source\repos\HelloCsharpwin\HelloCsharpwin\obj\Debug\net8.0-windows\HelloCsharpwin.genruntimeconfig.cache
+C:\Users\kjy1h\source\repos\HelloCsharpwin\HelloCsharpwin\obj\Debug\net8.0-windows\ref\HelloCsharpwin.dll
