@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HelloCsharpwin")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63f2ea50dd391def487cae6a9ca184fb9c22a2d5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("HelloCsharpwin")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HelloCsharpwin")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
