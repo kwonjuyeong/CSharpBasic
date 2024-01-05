@@ -118,7 +118,21 @@ namespace HelloCsharpwin
         private void NumPlus_Click(object sender, EventArgs e)
         {
             int num = int.Parse(NumScreen.Text);
-            Result = Result + num;
+            
+
+            if(Opt == Operators.Add)
+            {
+                Result = Result + num;
+            }
+            else if(Opt == Operators.Sub)
+            {
+                Result = Result - num;
+            }
+            else if(Opt == Operators.Multi)
+            {
+                Result = Result * num;
+            }
+            
 
             NumScreen.Text = Result.ToString();
             isNewNum = true;
