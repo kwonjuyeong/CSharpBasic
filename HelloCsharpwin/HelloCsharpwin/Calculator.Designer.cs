@@ -43,15 +43,15 @@
             Num0 = new Button();
             minus = new Button();
             button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            multi = new Button();
+            div = new Button();
             dot = new Button();
             switchPM = new Button();
-            ClearNum = new Button();
+            ClearBtn = new Button();
             button4 = new Button();
             button5 = new Button();
             button6 = new Button();
-            button7 = new Button();
+            backBtn = new Button();
             button8 = new Button();
             button9 = new Button();
             SuspendLayout();
@@ -66,7 +66,7 @@
             Num1.TabIndex = 0;
             Num1.Text = "1";
             Num1.UseVisualStyleBackColor = false;
-            Num1.Click += NumButton1_Click;
+            Num1.Click += NumButton_Click;
             // 
             // Num2
             // 
@@ -78,7 +78,7 @@
             Num2.TabIndex = 1;
             Num2.Text = "2";
             Num2.UseVisualStyleBackColor = false;
-            Num2.Click += NumButton2_Click;
+            Num2.Click += NumButton_Click;
             // 
             // NumScreen
             // 
@@ -101,7 +101,7 @@
             plus.TabIndex = 3;
             plus.Text = "+";
             plus.UseVisualStyleBackColor = true;
-            plus.Click += NumPlus_Click;
+            plus.Click += OptBtn_Click;
             // 
             // Num3
             // 
@@ -113,7 +113,7 @@
             Num3.TabIndex = 4;
             Num3.Text = "3";
             Num3.UseVisualStyleBackColor = false;
-            Num3.Click += Num3_Click;
+            Num3.Click += NumButton_Click;
             // 
             // Num4
             // 
@@ -125,7 +125,7 @@
             Num4.TabIndex = 5;
             Num4.Text = "4";
             Num4.UseVisualStyleBackColor = false;
-            Num4.Click += Num4_Click;
+            Num4.Click += NumButton_Click;
             // 
             // Num5
             // 
@@ -137,7 +137,7 @@
             Num5.TabIndex = 6;
             Num5.Text = "5";
             Num5.UseVisualStyleBackColor = false;
-            Num5.Click += Num5_Click;
+            Num5.Click += NumButton_Click;
             // 
             // Num6
             // 
@@ -149,7 +149,7 @@
             Num6.TabIndex = 7;
             Num6.Text = "6";
             Num6.UseVisualStyleBackColor = false;
-            Num6.Click += Num6_Click;
+            Num6.Click += NumButton_Click;
             // 
             // Num7
             // 
@@ -161,7 +161,7 @@
             Num7.TabIndex = 8;
             Num7.Text = "7";
             Num7.UseVisualStyleBackColor = false;
-            Num7.Click += Num7_Click;
+            Num7.Click += NumButton_Click;
             // 
             // Num8
             // 
@@ -173,7 +173,7 @@
             Num8.TabIndex = 9;
             Num8.Text = "8";
             Num8.UseVisualStyleBackColor = false;
-            Num8.Click += Num8_Click;
+            Num8.Click += NumButton_Click;
             // 
             // Num9
             // 
@@ -185,7 +185,7 @@
             Num9.TabIndex = 10;
             Num9.Text = "9";
             Num9.UseVisualStyleBackColor = false;
-            Num9.Click += Num9_Click;
+            Num9.Click += NumButton_Click;
             // 
             // Num0
             // 
@@ -197,50 +197,54 @@
             Num0.TabIndex = 11;
             Num0.Text = "0";
             Num0.UseVisualStyleBackColor = false;
-            Num0.Click += Num0_Click;
+            Num0.Click += NumButton_Click;
             // 
             // minus
             // 
-            minus.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold);
+            minus.Font = new Font("맑은 고딕", 15.75F, FontStyle.Bold);
             minus.Location = new Point(284, 285);
             minus.Name = "minus";
             minus.Size = new Size(85, 55);
             minus.TabIndex = 12;
             minus.Text = "-";
             minus.UseVisualStyleBackColor = true;
-            minus.Click += NumPlus_Click;
+            minus.Click += OptBtn_Click;
             // 
             // button1
             // 
-            button1.BackColor = Color.White;
+            button1.BackColor = Color.Black;
+            button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("맑은 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            button1.ForeColor = SystemColors.ButtonHighlight;
             button1.Location = new Point(284, 404);
             button1.Name = "button1";
             button1.Size = new Size(85, 55);
             button1.TabIndex = 13;
             button1.Text = "=";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += OptBtn_Click;
             // 
-            // button2
+            // multi
             // 
-            button2.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold);
-            button2.Location = new Point(284, 224);
-            button2.Name = "button2";
-            button2.Size = new Size(85, 55);
-            button2.TabIndex = 14;
-            button2.Text = "x";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += NumPlus_Click;
+            multi.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold);
+            multi.Location = new Point(284, 224);
+            multi.Name = "multi";
+            multi.Size = new Size(85, 55);
+            multi.TabIndex = 14;
+            multi.Text = "x";
+            multi.UseVisualStyleBackColor = true;
+            multi.Click += OptBtn_Click;
             // 
-            // button3
+            // div
             // 
-            button3.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold);
-            button3.Location = new Point(284, 164);
-            button3.Name = "button3";
-            button3.Size = new Size(85, 55);
-            button3.TabIndex = 15;
-            button3.Text = "÷";
-            button3.UseVisualStyleBackColor = true;
+            div.Font = new Font("맑은 고딕", 15.75F, FontStyle.Bold);
+            div.Location = new Point(284, 164);
+            div.Name = "div";
+            div.Size = new Size(85, 55);
+            div.TabIndex = 15;
+            div.Text = "÷";
+            div.UseVisualStyleBackColor = true;
+            div.Click += OptBtn_Click;
             // 
             // dot
             // 
@@ -263,16 +267,18 @@
             switchPM.TabIndex = 17;
             switchPM.Text = "+/-";
             switchPM.UseVisualStyleBackColor = false;
+            switchPM.Click += switchPM_Click;
             // 
-            // ClearNum
+            // ClearBtn
             // 
-            ClearNum.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold);
-            ClearNum.Location = new Point(192, 103);
-            ClearNum.Name = "ClearNum";
-            ClearNum.Size = new Size(85, 55);
-            ClearNum.TabIndex = 18;
-            ClearNum.Text = "C";
-            ClearNum.UseVisualStyleBackColor = true;
+            ClearBtn.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold);
+            ClearBtn.Location = new Point(192, 103);
+            ClearBtn.Name = "ClearBtn";
+            ClearBtn.Size = new Size(85, 55);
+            ClearBtn.TabIndex = 18;
+            ClearBtn.Text = "C";
+            ClearBtn.UseVisualStyleBackColor = true;
+            ClearBtn.Click += ClearBtn_Click;
             // 
             // button4
             // 
@@ -281,7 +287,7 @@
             button4.Name = "button4";
             button4.Size = new Size(85, 55);
             button4.TabIndex = 19;
-            button4.Text = "2√𝓍";
+            button4.Text = "²√𝓍";
             button4.UseVisualStyleBackColor = true;
             // 
             // button5
@@ -304,15 +310,16 @@
             button6.Text = "1/𝓍";
             button6.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // backBtn
             // 
-            button7.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold);
-            button7.Image = (Image)resources.GetObject("button7.Image");
-            button7.Location = new Point(283, 103);
-            button7.Name = "button7";
-            button7.Size = new Size(85, 55);
-            button7.TabIndex = 22;
-            button7.UseVisualStyleBackColor = true;
+            backBtn.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold);
+            backBtn.Image = (Image)resources.GetObject("backBtn.Image");
+            backBtn.Location = new Point(283, 103);
+            backBtn.Name = "backBtn";
+            backBtn.Size = new Size(85, 55);
+            backBtn.TabIndex = 22;
+            backBtn.UseVisualStyleBackColor = true;
+            backBtn.Click += backBtn_Click;
             // 
             // button8
             // 
@@ -342,15 +349,15 @@
             ClientSize = new Size(385, 481);
             Controls.Add(button9);
             Controls.Add(button8);
-            Controls.Add(button7);
+            Controls.Add(backBtn);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button4);
-            Controls.Add(ClearNum);
+            Controls.Add(ClearBtn);
             Controls.Add(switchPM);
             Controls.Add(dot);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(div);
+            Controls.Add(multi);
             Controls.Add(button1);
             Controls.Add(minus);
             Controls.Add(Num0);
@@ -386,15 +393,15 @@
         private Button Num0;
         private Button minus;
         private Button button1;
-        private Button button2;
-        private Button button3;
+        private Button multi;
+        private Button div;
         private Button dot;
         private Button switchPM;
-        private Button ClearNum;
+        private Button ClearBtn;
         private Button button4;
         private Button button5;
         private Button button6;
-        private Button button7;
+        private Button backBtn;
         private Button button8;
         private Button button9;
     }

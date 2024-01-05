@@ -10,94 +10,24 @@ namespace HelloCsharpwin
 
     public partial class Calculator : Form
     {
-        public int Result = 0;
+        public double Result = 0;
         public bool isNewNum = true;
         public Operators Opt = Operators.Add;
-
-
 
         public Calculator()
         {
             InitializeComponent();
-            
-        }
-
-
-        public int Add(int number1, int number2)
-        {
-            int sum = number1 + number2;
-            return sum;
 
         }
 
-        public float Add(float number1, float number2)
-        {
-            float sum = number1 + number2;
-            return sum;
-        }
-        public int Sub(int number1, int number2)
-        {
-            int sub = number1 - number2;
-            return sub;
-
-        }
-
-        private void NumButton1_Click(object sender, EventArgs e)
+        private void NumButton_Click(object sender, EventArgs e)
         {
             Button numButton = (Button)sender;
             SetNum(numButton.Text);
         }
 
-        private void NumButton2_Click(object sender, EventArgs e)
-        {
-            SetNum("2");
-        }
-
-        private void Num3_Click(object sender, EventArgs e)
-        {
-            SetNum("3");
-        }
-
-        private void Num4_Click(object sender, EventArgs e)
-        {
-            SetNum("4");
-        }
-
-        private void Num5_Click(object sender, EventArgs e)
-        {
-            SetNum("5");
-        }
-
-        private void Num6_Click(object sender, EventArgs e)
-        {
-            SetNum("6");
-
-        }
-
-        private void Num7_Click(object sender, EventArgs e)
-        {
-            SetNum("7");
-        }
-
-        private void Num8_Click(object sender, EventArgs e)
-        {
-            SetNum("8");
-        }
-
-        private void Num9_Click(object sender, EventArgs e)
-        {
-            SetNum("9");
-        }
-
-        private void Num0_Click(object sender, EventArgs e)
-        {
-            SetNum("0");
-        }
-
-
         public void SetNum(string num)
         {
-
             if (isNewNum)
             {
                 NumScreen.Text = num;
@@ -110,37 +40,68 @@ namespace HelloCsharpwin
             else
             {
                 NumScreen.Text = NumScreen.Text + num;
-
             }
 
         }
 
-        private void NumPlus_Click(object sender, EventArgs e)
+        private void OptBtn_Click(object sender, EventArgs e)
         {
-            int num = int.Parse(NumScreen.Text);
-            
 
-            if(Opt == Operators.Add)
+            if (isNewNum == false)
             {
-                Result = Result + num;
-            }
-            else if(Opt == Operators.Sub)
-            {
-                Result = Result - num;
-            }
-            else if(Opt == Operators.Multi)
-            {
-                Result = Result * num;
-            }
-            
+                double num = double.Parse(NumScreen.Text);
 
-            NumScreen.Text = Result.ToString();
-            isNewNum = true;
+                if (Opt == Operators.Add)
+                    Result += num;
+                else if (Opt == Operators.Sub)
+                    Result -= num;
+                else if (Opt == Operators.Multi)
+                    Result *= num;
+                else if (Opt == Operators.Div && num != 0) // 0으로 나누는 것을 방지
+                    Result /= num;
+
+                NumScreen.Text = Result.ToString();
+                isNewNum = true;
+
+            }
+
+
+            Button optButton = (Button)sender;
+
+            if (optButton.Text == "+")
+                Opt = Operators.Add;
+            else if (optButton.Text == "-")
+                Opt = Operators.Sub;
+            else if (optButton.Text == "*")
+                Opt = Operators.Multi;
+            else if (optButton.Text == "÷")
+                Opt = Operators.Div;
+
 
         }
 
-    
+        private void ClearBtn_Click(object sender, EventArgs e)
+        {
+            Result = 0;
+            isNewNum = true;
+            Opt = Operators.Add;
 
+            NumScreen.Text = "0";
+        }
 
+        private void backBtn_Click(object sender, EventArgs e)
+        {
+            if (NumScreen.Text.Length > 0)
+            {
+                NumScreen.Text = NumScreen.Text.Substring(0, NumScreen.Text.Length - 1);
+            }
+
+        }
+
+        private void switchPM_Click(object sender, EventArgs e)
+        {
+            Result *= -1;
+            NumScreen.Text = Result.ToString();
+        }
     }
 }
