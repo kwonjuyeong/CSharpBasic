@@ -42,15 +42,15 @@
             Num9 = new Button();
             Num0 = new Button();
             minus = new Button();
-            button1 = new Button();
+            equalsBtn = new Button();
             multi = new Button();
             div = new Button();
-            dot = new Button();
+            dotBtn = new Button();
             switchPM = new Button();
             ClearBtn = new Button();
             button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
+            SqrBtn = new Button();
+            OneOverXBtn = new Button();
             backBtn = new Button();
             button8 = new Button();
             button9 = new Button();
@@ -210,19 +210,19 @@
             minus.UseVisualStyleBackColor = true;
             minus.Click += OptBtn_Click;
             // 
-            // button1
+            // equalsBtn
             // 
-            button1.BackColor = Color.Black;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("맑은 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(284, 404);
-            button1.Name = "button1";
-            button1.Size = new Size(85, 55);
-            button1.TabIndex = 13;
-            button1.Text = "=";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += OptBtn_Click;
+            equalsBtn.BackColor = Color.Black;
+            equalsBtn.FlatStyle = FlatStyle.Flat;
+            equalsBtn.Font = new Font("맑은 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            equalsBtn.ForeColor = SystemColors.ButtonHighlight;
+            equalsBtn.Location = new Point(284, 404);
+            equalsBtn.Name = "equalsBtn";
+            equalsBtn.Size = new Size(85, 55);
+            equalsBtn.TabIndex = 13;
+            equalsBtn.Text = "=";
+            equalsBtn.UseVisualStyleBackColor = false;
+            equalsBtn.Click += OptBtn_Click;
             // 
             // multi
             // 
@@ -246,16 +246,17 @@
             div.UseVisualStyleBackColor = true;
             div.Click += OptBtn_Click;
             // 
-            // dot
+            // dotBtn
             // 
-            dot.BackColor = Color.White;
-            dot.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
-            dot.Location = new Point(192, 404);
-            dot.Name = "dot";
-            dot.Size = new Size(85, 55);
-            dot.TabIndex = 16;
-            dot.Text = ".";
-            dot.UseVisualStyleBackColor = false;
+            dotBtn.BackColor = Color.White;
+            dotBtn.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
+            dotBtn.Location = new Point(192, 404);
+            dotBtn.Name = "dotBtn";
+            dotBtn.Size = new Size(85, 55);
+            dotBtn.TabIndex = 16;
+            dotBtn.Text = ".";
+            dotBtn.UseVisualStyleBackColor = false;
+            dotBtn.Click += dotBtn_Click;
             // 
             // switchPM
             // 
@@ -290,25 +291,27 @@
             button4.Text = "²√𝓍";
             button4.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // SqrBtn
             // 
-            button5.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
-            button5.Location = new Point(101, 164);
-            button5.Name = "button5";
-            button5.Size = new Size(85, 55);
-            button5.TabIndex = 20;
-            button5.Text = "𝓍²";
-            button5.UseVisualStyleBackColor = true;
+            SqrBtn.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
+            SqrBtn.Location = new Point(101, 164);
+            SqrBtn.Name = "SqrBtn";
+            SqrBtn.Size = new Size(85, 55);
+            SqrBtn.TabIndex = 20;
+            SqrBtn.Text = "𝓍²";
+            SqrBtn.UseVisualStyleBackColor = true;
+            SqrBtn.Click += SqrBtn_Click;
             // 
-            // button6
+            // OneOverXBtn
             // 
-            button6.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
-            button6.Location = new Point(12, 164);
-            button6.Name = "button6";
-            button6.Size = new Size(85, 55);
-            button6.TabIndex = 21;
-            button6.Text = "1/𝓍";
-            button6.UseVisualStyleBackColor = true;
+            OneOverXBtn.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
+            OneOverXBtn.Location = new Point(12, 164);
+            OneOverXBtn.Name = "OneOverXBtn";
+            OneOverXBtn.Size = new Size(85, 55);
+            OneOverXBtn.TabIndex = 21;
+            OneOverXBtn.Text = "1/𝓍";
+            OneOverXBtn.UseVisualStyleBackColor = true;
+            OneOverXBtn.Click += OneOverXBtn_Click;
             // 
             // backBtn
             // 
@@ -346,19 +349,19 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(385, 481);
+            ClientSize = new Size(386, 487);
             Controls.Add(button9);
             Controls.Add(button8);
             Controls.Add(backBtn);
-            Controls.Add(button6);
-            Controls.Add(button5);
+            Controls.Add(OneOverXBtn);
+            Controls.Add(SqrBtn);
             Controls.Add(button4);
             Controls.Add(ClearBtn);
             Controls.Add(switchPM);
-            Controls.Add(dot);
+            Controls.Add(dotBtn);
             Controls.Add(div);
             Controls.Add(multi);
-            Controls.Add(button1);
+            Controls.Add(equalsBtn);
             Controls.Add(minus);
             Controls.Add(Num0);
             Controls.Add(Num9);
@@ -373,7 +376,8 @@
             Controls.Add(Num2);
             Controls.Add(Num1);
             Name = "Calculator";
-            Text = "Form1";
+            Text = "계산기";
+            Load += Calculator_Load;
             ResumeLayout(false);
         }
 
@@ -392,15 +396,15 @@
         private Button Num9;
         private Button Num0;
         private Button minus;
-        private Button button1;
+        private Button equalsBtn;
         private Button multi;
         private Button div;
-        private Button dot;
+        private Button dotBtn;
         private Button switchPM;
         private Button ClearBtn;
         private Button button4;
-        private Button button5;
-        private Button button6;
+        private Button SqrBtn;
+        private Button OneOverXBtn;
         private Button backBtn;
         private Button button8;
         private Button button9;

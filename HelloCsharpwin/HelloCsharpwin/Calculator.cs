@@ -1,18 +1,20 @@
+ï»¿using System.Xml.Linq;
+
 namespace HelloCsharpwin
 {
 
-    /*enum = ¿­°ÅÇü µ¥ÀÌÅÍ Å¸ÀÔ -> ¼±¾ğÀ» ÇÏ°í »ç¿ëÇÒ ¼ö ÀÖ´Ù.
+    /*enum = ì—´ê±°í˜• ë°ì´í„° íƒ€ì… -> ì„ ì–¸ì„ í•˜ê³  ì‚¬ìš©í•  ìˆ˜ ìˆë‹¤.
     public enum Season {Spring, Summer, Fall, Winter};
     Season currentSeason = Season.Spring;
     */
 
-    public enum Operators {Add, Sub, Multi, Div}
+    public enum Operators {Nothing, Add, Sub, Multi, Div}
 
     public partial class Calculator : Form
     {
         public double Result = 0;
         public bool isNewNum = true;
-        public Operators Opt = Operators.Add;
+        public Operators Opt = Operators.Nothing;
 
         public Calculator()
         {
@@ -20,12 +22,15 @@ namespace HelloCsharpwin
 
         }
 
+        //ìˆ«ì ë²„íŠ¼ í´ë¦­ ì´ë²¤íŠ¸
         private void NumButton_Click(object sender, EventArgs e)
         {
             Button numButton = (Button)sender;
             SetNum(numButton.Text);
         }
 
+
+        //ìˆ«ì ì…ë ¥ ì²˜ë¦¬ ë©”ì†Œë“œ
         public void SetNum(string num)
         {
             if (isNewNum)
@@ -39,15 +44,16 @@ namespace HelloCsharpwin
             }
             else
             {
-                NumScreen.Text = NumScreen.Text + num;
+                NumScreen.Text += num;
             }
 
         }
 
 
+        //ì‚¬ì¹™ ì—°ì‚° ì²˜ë¦¬
         private void OptBtn_Click(object sender, EventArgs e)
         {
-            if (isNewNum == false)
+            if (!isNewNum)
             {
                 double num = double.Parse(NumScreen.Text);
 
@@ -56,13 +62,9 @@ namespace HelloCsharpwin
                 else if (Opt == Operators.Sub)
                     Result -= num;
                 else if (Opt == Operators.Multi)
-                {
                     Result *= num;
-                }
                 else if (Opt == Operators.Div && num != 0)
-                {
                     Result /= num;
-                }
 
                 NumScreen.Text = Result.ToString();
                 isNewNum = true;
@@ -76,40 +78,42 @@ namespace HelloCsharpwin
                 Opt = Operators.Sub;
             else if (optButton.Text == "x")
                 Opt = Operators.Multi;
-            else if (optButton.Text == "¡À")
+            else if (optButton.Text == "Ã·")
                 Opt = Operators.Div;
+
+
         }
 
-        //Clear(ÀüÃ¼ Áö¿ò) 
+        //Clear(ì´ˆê¸°í™”)
         private void ClearBtn_Click(object sender, EventArgs e)
         {
             Result = 0;
             isNewNum = true;
-            Opt = Operators.Add;
+            Opt = Operators.Nothing;
 
             NumScreen.Text = "0";
         }
 
-        //Back(ÇÏ³ª¾¿ Áö¿ò)
-        //¿¹¿ÜÃ³¸® : ±ÛÀÚ ±æÀÌ°¡ 1º¸´Ù ÀÛÀ¸¸é 0À¸·Î º¯°æ
+        //Back(ìˆ«ì ì§€ì›€ ì²˜ë¦¬)
+        //ì˜ˆì™¸ì²˜ë¦¬ : ê¸€ì ê¸¸ì´ê°€ 1ë³´ë‹¤ ì‘ìœ¼ë©´ 0ìœ¼ë¡œ ë³€ê²½
         private void backBtn_Click(object sender, EventArgs e)
         {
             if (NumScreen.Text.Length > 1)
                 NumScreen.Text = NumScreen.Text.Substring(0, NumScreen.Text.Length - 1);
             else
                 NumScreen.Text = "0";
-            
+
 
         }
 
-        //+/- À½¼ö ¾ç¼ö º¯È¯
+        // ìŒìˆ˜/ì–‘ìˆ˜ ë³€í™˜ ì²˜ë¦¬
         private void switchPM_Click(object sender, EventArgs e)
         {
             if (double.TryParse(NumScreen.Text, out double currentNumber))
             {
                 currentNumber *= -1;
                 NumScreen.Text = currentNumber.ToString();
-                Result = currentNumber; // ¿¬»ê °á°úÀÎ Resultµµ ºÎÈ£ º¯°æ
+                Result = currentNumber; // ì—°ì‚° ê²°ê³¼ì¸ Resultë„ ë¶€í˜¸ ë³€ê²½
             }
             else
             {
@@ -117,6 +121,41 @@ namespace HelloCsharpwin
             }
         }
 
+        //ì—­ìˆ˜ ì²˜ë¦¬
+        private void OneOverXBtn_Click(object sender, EventArgs e)
+        {
+            if (!isNewNum)
+            {
+                double inputNumber = Double.Parse(NumScreen.Text);
+                double inverse = 1.0 / inputNumber;
+                NumScreen.Text = inverse.ToString();
+                isNewNum = true;
+            }
+        }
 
+
+        // ì†Œìˆ˜ì  ì²˜ë¦¬
+        private void dotBtn_Click(object sender, EventArgs e)
+        {
+            if (NumScreen.Text.Contains("."))
+                return;
+            else
+                NumScreen.Text += ".";
+        }
+
+        //ì œê³± ì²˜ë¦¬
+        private void SqrBtn_Click(object sender, EventArgs e)
+        {
+            double num = double.Parse(NumScreen.Text);
+            double result = num * num;
+            NumScreen.Text = result.ToString();
+            Result = result;
+
+        }
+
+        private void Calculator_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
