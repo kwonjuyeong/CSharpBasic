@@ -48,12 +48,12 @@
             dotBtn = new Button();
             switchPM = new Button();
             ClearBtn = new Button();
-            button4 = new Button();
+            rootBtn = new Button();
             SqrBtn = new Button();
             OneOverXBtn = new Button();
             backBtn = new Button();
-            button8 = new Button();
-            button9 = new Button();
+            CEBtn = new Button();
+            PercentBtn = new Button();
             SuspendLayout();
             // 
             // Num1
@@ -281,15 +281,16 @@
             ClearBtn.UseVisualStyleBackColor = true;
             ClearBtn.Click += ClearBtn_Click;
             // 
-            // button4
+            // rootBtn
             // 
-            button4.Font = new Font("맑은 고딕", 12F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            button4.Location = new Point(191, 164);
-            button4.Name = "button4";
-            button4.Size = new Size(85, 55);
-            button4.TabIndex = 19;
-            button4.Text = "²√𝓍";
-            button4.UseVisualStyleBackColor = true;
+            rootBtn.Font = new Font("맑은 고딕", 12F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            rootBtn.Location = new Point(191, 164);
+            rootBtn.Name = "rootBtn";
+            rootBtn.Size = new Size(85, 55);
+            rootBtn.TabIndex = 19;
+            rootBtn.Text = "²√𝓍";
+            rootBtn.UseVisualStyleBackColor = true;
+            rootBtn.Click += rootBtn_Click;
             // 
             // SqrBtn
             // 
@@ -324,38 +325,40 @@
             backBtn.UseVisualStyleBackColor = true;
             backBtn.Click += backBtn_Click;
             // 
-            // button8
+            // CEBtn
             // 
-            button8.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold);
-            button8.Location = new Point(101, 103);
-            button8.Name = "button8";
-            button8.Size = new Size(85, 55);
-            button8.TabIndex = 23;
-            button8.Text = "CE";
-            button8.UseVisualStyleBackColor = true;
+            CEBtn.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold);
+            CEBtn.Location = new Point(101, 103);
+            CEBtn.Name = "CEBtn";
+            CEBtn.Size = new Size(85, 55);
+            CEBtn.TabIndex = 23;
+            CEBtn.Text = "CE";
+            CEBtn.UseVisualStyleBackColor = true;
+            CEBtn.Click += CEBtn_Click;
             // 
-            // button9
+            // PercentBtn
             // 
-            button9.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold);
-            button9.Location = new Point(12, 103);
-            button9.Name = "button9";
-            button9.Size = new Size(85, 55);
-            button9.TabIndex = 24;
-            button9.Text = "%";
-            button9.UseVisualStyleBackColor = true;
+            PercentBtn.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold);
+            PercentBtn.Location = new Point(12, 103);
+            PercentBtn.Name = "PercentBtn";
+            PercentBtn.Size = new Size(85, 55);
+            PercentBtn.TabIndex = 24;
+            PercentBtn.Text = "%";
+            PercentBtn.UseVisualStyleBackColor = true;
+            PercentBtn.Click += PercentBtn_Click;
             // 
             // Calculator
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(386, 487);
-            Controls.Add(button9);
-            Controls.Add(button8);
+            ClientSize = new Size(385, 479);
+            Controls.Add(PercentBtn);
+            Controls.Add(CEBtn);
             Controls.Add(backBtn);
             Controls.Add(OneOverXBtn);
             Controls.Add(SqrBtn);
-            Controls.Add(button4);
+            Controls.Add(rootBtn);
             Controls.Add(ClearBtn);
             Controls.Add(switchPM);
             Controls.Add(dotBtn);
@@ -377,7 +380,6 @@
             Controls.Add(Num1);
             Name = "Calculator";
             Text = "계산기";
-            Load += Calculator_Load;
             ResumeLayout(false);
         }
 
@@ -402,11 +404,11 @@
         private Button dotBtn;
         private Button switchPM;
         private Button ClearBtn;
-        private Button button4;
+        private Button rootBtn;
         private Button SqrBtn;
         private Button OneOverXBtn;
         private Button backBtn;
-        private Button button8;
-        private Button button9;
+        private Button CEBtn;
+        private Button PercentBtn;
     }
 }

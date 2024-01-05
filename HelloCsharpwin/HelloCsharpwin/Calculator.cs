@@ -53,10 +53,10 @@ namespace HelloCsharpwin
         //사칙 연산 처리
         private void OptBtn_Click(object sender, EventArgs e)
         {
-            if (!isNewNum)
-            {
-                double num = double.Parse(NumScreen.Text);
+            double num = double.Parse(NumScreen.Text);
 
+            if (Opt != Operators.Nothing && !isNewNum)
+            {
                 if (Opt == Operators.Add)
                     Result += num;
                 else if (Opt == Operators.Sub)
@@ -65,10 +65,14 @@ namespace HelloCsharpwin
                     Result *= num;
                 else if (Opt == Operators.Div && num != 0)
                     Result /= num;
-
-                NumScreen.Text = Result.ToString();
-                isNewNum = true;
             }
+            else
+            {
+                Result = num;
+            }
+
+            NumScreen.Text = Result.ToString();
+            isNewNum = true;
 
             Button optButton = (Button)sender;
 
@@ -80,8 +84,6 @@ namespace HelloCsharpwin
                 Opt = Operators.Multi;
             else if (optButton.Text == "÷")
                 Opt = Operators.Div;
-
-
         }
 
         //Clear(초기화)
@@ -102,7 +104,6 @@ namespace HelloCsharpwin
                 NumScreen.Text = NumScreen.Text.Substring(0, NumScreen.Text.Length - 1);
             else
                 NumScreen.Text = "0";
-
 
         }
 
@@ -153,9 +154,34 @@ namespace HelloCsharpwin
 
         }
 
-        private void Calculator_Load(object sender, EventArgs e)
+        //제곱근 계산
+        private void rootBtn_Click(object sender, EventArgs e)
         {
+            double num = double.Parse(NumScreen.Text);
+            double result = Math.Sqrt(num); // 제곱근 계산
+            NumScreen.Text = result.ToString();
+            Result = result;
 
+        }
+
+        // % (퍼센트) 연산
+        private void PercentBtn_Click(object sender, EventArgs e)
+        {
+            if (!isNewNum)
+            {
+                double num = double.Parse(NumScreen.Text);
+                double percent = num / 100.0;
+                double result = Result + (Result * percent); // 이전 결과에 퍼센트를 더함
+                NumScreen.Text = result.ToString();
+                isNewNum = true;
+            }
+        }
+
+        // CE(현재 입력된 숫자 삭제)
+        private void CEBtn_Click(object sender, EventArgs e)
+        {
+            NumScreen.Text = "0";
+            isNewNum = true;
         }
     }
 }
