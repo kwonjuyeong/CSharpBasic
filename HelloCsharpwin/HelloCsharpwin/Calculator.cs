@@ -183,5 +183,70 @@ namespace HelloCsharpwin
             NumScreen.Text = "0";
             isNewNum = true;
         }
+
+
+        private void Caculator_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Back)
+            {
+                backBtn_Click(sender, e);
+            }
+            else if (e.KeyData == Keys.Enter)
+            {
+                OptBtn_Click(sender, e);
+            }
+            else if (e.KeyData == Keys.Oemplus)
+            {
+                OptBtn_Click(Operators.Add, e);
+            }
+            else if (e.KeyCode == Keys.Decimal || e.KeyCode == Keys.OemPeriod) // 소수점 키
+            {
+                dotBtn_Click(sender, e);
+            }
+
+        }
+
+
+
+        /*
+        //키보드 기능 수정해야됨
+        private void Calculator_KeyDown(object sender, KeyEventArgs e)
+        {
+            // 숫자 키패드 입력 처리
+            if (e.KeyCode >= Keys.NumPad0 && e.KeyCode <= Keys.NumPad9)
+            {
+                int num = e.KeyCode - Keys.NumPad0;
+                SetNum(num.ToString());
+            }
+            else if (e.KeyCode == Keys.Decimal || e.KeyCode == Keys.OemPeriod) // 소수점 키
+            {
+                dotBtn_Click(sender, e);
+            }
+            // 사칙연산 입력 처리
+            else if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Oemplus)
+            {
+                OptBtn_Click(plus, e); 
+            }
+            else if (e.KeyCode == Keys.Subtract || e.KeyCode == Keys.OemMinus)
+            {
+                OptBtn_Click(minus, e); 
+            }
+            else if (e.KeyCode == Keys.Multiply) 
+            {
+                OptBtn_Click(multi, e); 
+            }
+            else if (e.KeyCode == Keys.Divide || e.KeyCode == Keys.OemBackslash) 
+            {
+                OptBtn_Click(div, e);
+            }
+            //등호
+            else if (e.KeyCode == Keys.Enter)
+            {
+                string expression = NumScreen.Text;
+                NumScreen.Text = expression;
+                isNewNum = true;
+            }
+        }*/
+
     }
 }

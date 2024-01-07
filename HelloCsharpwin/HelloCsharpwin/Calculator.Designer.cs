@@ -54,13 +54,14 @@
             backBtn = new Button();
             CEBtn = new Button();
             PercentBtn = new Button();
+            label1 = new Label();
             SuspendLayout();
             // 
             // Num1
             // 
             Num1.BackColor = Color.White;
             Num1.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
-            Num1.Location = new Point(12, 344);
+            Num1.Location = new Point(12, 395);
             Num1.Name = "Num1";
             Num1.Size = new Size(85, 55);
             Num1.TabIndex = 0;
@@ -72,7 +73,7 @@
             // 
             Num2.BackColor = Color.White;
             Num2.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
-            Num2.Location = new Point(101, 344);
+            Num2.Location = new Point(101, 395);
             Num2.Name = "Num2";
             Num2.Size = new Size(85, 55);
             Num2.TabIndex = 1;
@@ -85,9 +86,9 @@
             NumScreen.BackColor = Color.White;
             NumScreen.BorderStyle = BorderStyle.Fixed3D;
             NumScreen.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            NumScreen.Location = new Point(12, 21);
+            NumScreen.Location = new Point(12, 86);
             NumScreen.Name = "NumScreen";
-            NumScreen.Size = new Size(357, 69);
+            NumScreen.Size = new Size(357, 61);
             NumScreen.TabIndex = 2;
             NumScreen.Text = "0";
             NumScreen.TextAlign = ContentAlignment.MiddleRight;
@@ -95,19 +96,20 @@
             // plus
             // 
             plus.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold);
-            plus.Location = new Point(284, 344);
+            plus.Location = new Point(284, 395);
             plus.Name = "plus";
             plus.Size = new Size(85, 55);
             plus.TabIndex = 3;
             plus.Text = "+";
             plus.UseVisualStyleBackColor = true;
             plus.Click += OptBtn_Click;
+            plus.KeyDown += Caculator_KeyDown;
             // 
             // Num3
             // 
             Num3.BackColor = Color.White;
             Num3.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
-            Num3.Location = new Point(192, 344);
+            Num3.Location = new Point(192, 395);
             Num3.Name = "Num3";
             Num3.Size = new Size(85, 55);
             Num3.TabIndex = 4;
@@ -119,7 +121,7 @@
             // 
             Num4.BackColor = Color.White;
             Num4.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
-            Num4.Location = new Point(12, 285);
+            Num4.Location = new Point(12, 336);
             Num4.Name = "Num4";
             Num4.Size = new Size(85, 55);
             Num4.TabIndex = 5;
@@ -131,7 +133,7 @@
             // 
             Num5.BackColor = Color.White;
             Num5.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
-            Num5.Location = new Point(101, 285);
+            Num5.Location = new Point(101, 336);
             Num5.Name = "Num5";
             Num5.Size = new Size(85, 55);
             Num5.TabIndex = 6;
@@ -143,7 +145,7 @@
             // 
             Num6.BackColor = Color.White;
             Num6.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
-            Num6.Location = new Point(191, 285);
+            Num6.Location = new Point(191, 336);
             Num6.Name = "Num6";
             Num6.Size = new Size(85, 55);
             Num6.TabIndex = 7;
@@ -155,7 +157,7 @@
             // 
             Num7.BackColor = Color.White;
             Num7.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
-            Num7.Location = new Point(12, 224);
+            Num7.Location = new Point(12, 275);
             Num7.Name = "Num7";
             Num7.Size = new Size(85, 55);
             Num7.TabIndex = 8;
@@ -167,7 +169,7 @@
             // 
             Num8.BackColor = Color.White;
             Num8.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
-            Num8.Location = new Point(101, 224);
+            Num8.Location = new Point(101, 275);
             Num8.Name = "Num8";
             Num8.Size = new Size(85, 55);
             Num8.TabIndex = 9;
@@ -179,7 +181,7 @@
             // 
             Num9.BackColor = Color.White;
             Num9.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
-            Num9.Location = new Point(191, 224);
+            Num9.Location = new Point(191, 275);
             Num9.Name = "Num9";
             Num9.Size = new Size(85, 55);
             Num9.TabIndex = 10;
@@ -191,7 +193,7 @@
             // 
             Num0.BackColor = Color.White;
             Num0.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
-            Num0.Location = new Point(101, 404);
+            Num0.Location = new Point(101, 455);
             Num0.Name = "Num0";
             Num0.Size = new Size(85, 55);
             Num0.TabIndex = 11;
@@ -202,7 +204,7 @@
             // minus
             // 
             minus.Font = new Font("맑은 고딕", 15.75F, FontStyle.Bold);
-            minus.Location = new Point(284, 285);
+            minus.Location = new Point(284, 336);
             minus.Name = "minus";
             minus.Size = new Size(85, 55);
             minus.TabIndex = 12;
@@ -216,7 +218,7 @@
             equalsBtn.FlatStyle = FlatStyle.Flat;
             equalsBtn.Font = new Font("맑은 고딕", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 129);
             equalsBtn.ForeColor = SystemColors.ButtonHighlight;
-            equalsBtn.Location = new Point(284, 404);
+            equalsBtn.Location = new Point(284, 455);
             equalsBtn.Name = "equalsBtn";
             equalsBtn.Size = new Size(85, 55);
             equalsBtn.TabIndex = 13;
@@ -227,7 +229,7 @@
             // multi
             // 
             multi.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold);
-            multi.Location = new Point(284, 224);
+            multi.Location = new Point(284, 275);
             multi.Name = "multi";
             multi.Size = new Size(85, 55);
             multi.TabIndex = 14;
@@ -238,7 +240,7 @@
             // div
             // 
             div.Font = new Font("맑은 고딕", 15.75F, FontStyle.Bold);
-            div.Location = new Point(284, 164);
+            div.Location = new Point(284, 215);
             div.Name = "div";
             div.Size = new Size(85, 55);
             div.TabIndex = 15;
@@ -250,7 +252,7 @@
             // 
             dotBtn.BackColor = Color.White;
             dotBtn.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
-            dotBtn.Location = new Point(192, 404);
+            dotBtn.Location = new Point(192, 455);
             dotBtn.Name = "dotBtn";
             dotBtn.Size = new Size(85, 55);
             dotBtn.TabIndex = 16;
@@ -262,7 +264,7 @@
             // 
             switchPM.BackColor = Color.White;
             switchPM.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
-            switchPM.Location = new Point(12, 403);
+            switchPM.Location = new Point(12, 454);
             switchPM.Name = "switchPM";
             switchPM.Size = new Size(85, 55);
             switchPM.TabIndex = 17;
@@ -273,7 +275,7 @@
             // ClearBtn
             // 
             ClearBtn.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold);
-            ClearBtn.Location = new Point(192, 103);
+            ClearBtn.Location = new Point(192, 154);
             ClearBtn.Name = "ClearBtn";
             ClearBtn.Size = new Size(85, 55);
             ClearBtn.TabIndex = 18;
@@ -284,7 +286,7 @@
             // rootBtn
             // 
             rootBtn.Font = new Font("맑은 고딕", 12F, FontStyle.Bold, GraphicsUnit.Point, 129);
-            rootBtn.Location = new Point(191, 164);
+            rootBtn.Location = new Point(191, 215);
             rootBtn.Name = "rootBtn";
             rootBtn.Size = new Size(85, 55);
             rootBtn.TabIndex = 19;
@@ -295,7 +297,7 @@
             // SqrBtn
             // 
             SqrBtn.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
-            SqrBtn.Location = new Point(101, 164);
+            SqrBtn.Location = new Point(101, 215);
             SqrBtn.Name = "SqrBtn";
             SqrBtn.Size = new Size(85, 55);
             SqrBtn.TabIndex = 20;
@@ -306,7 +308,7 @@
             // OneOverXBtn
             // 
             OneOverXBtn.Font = new Font("맑은 고딕", 12F, FontStyle.Bold);
-            OneOverXBtn.Location = new Point(12, 164);
+            OneOverXBtn.Location = new Point(12, 215);
             OneOverXBtn.Name = "OneOverXBtn";
             OneOverXBtn.Size = new Size(85, 55);
             OneOverXBtn.TabIndex = 21;
@@ -318,7 +320,7 @@
             // 
             backBtn.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold);
             backBtn.Image = (Image)resources.GetObject("backBtn.Image");
-            backBtn.Location = new Point(283, 103);
+            backBtn.Location = new Point(283, 154);
             backBtn.Name = "backBtn";
             backBtn.Size = new Size(85, 55);
             backBtn.TabIndex = 22;
@@ -328,7 +330,7 @@
             // CEBtn
             // 
             CEBtn.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold);
-            CEBtn.Location = new Point(101, 103);
+            CEBtn.Location = new Point(101, 154);
             CEBtn.Name = "CEBtn";
             CEBtn.Size = new Size(85, 55);
             CEBtn.TabIndex = 23;
@@ -339,7 +341,7 @@
             // PercentBtn
             // 
             PercentBtn.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold);
-            PercentBtn.Location = new Point(12, 103);
+            PercentBtn.Location = new Point(12, 154);
             PercentBtn.Name = "PercentBtn";
             PercentBtn.Size = new Size(85, 55);
             PercentBtn.TabIndex = 24;
@@ -347,12 +349,26 @@
             PercentBtn.UseVisualStyleBackColor = true;
             PercentBtn.Click += PercentBtn_Click;
             // 
+            // label1
+            // 
+            label1.BackColor = Color.Black;
+            label1.BorderStyle = BorderStyle.Fixed3D;
+            label1.Font = new Font("맑은 고딕", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 129);
+            label1.ForeColor = SystemColors.HighlightText;
+            label1.Location = new Point(11, 15);
+            label1.Name = "label1";
+            label1.Size = new Size(357, 59);
+            label1.TabIndex = 25;
+            label1.Text = "0";
+            label1.TextAlign = ContentAlignment.MiddleRight;
+            // 
             // Calculator
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(385, 479);
+            ClientSize = new Size(381, 531);
+            Controls.Add(label1);
             Controls.Add(PercentBtn);
             Controls.Add(CEBtn);
             Controls.Add(backBtn);
@@ -410,5 +426,6 @@
         private Button backBtn;
         private Button CEBtn;
         private Button PercentBtn;
+        private Label label1;
     }
 }
