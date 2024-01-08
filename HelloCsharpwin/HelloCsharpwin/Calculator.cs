@@ -8,7 +8,7 @@ namespace HelloCsharpwin
     Season currentSeason = Season.Spring;
     */
 
-    public enum Operators {Nothing, Add, Sub, Multi, Div}
+    public enum Operators {Nothing, Add, Sub, Multi, Div, Shift8}
 
     public partial class Calculator : Form
     {
@@ -53,10 +53,14 @@ namespace HelloCsharpwin
         //사칙 연산 처리
         private void OptBtn_Click(object sender, EventArgs e)
         {
+
+            System.Diagnostics.Debug.WriteLine("입력 발생!");
+
             double num = double.Parse(NumScreen.Text);
 
             if (Opt != Operators.Nothing && !isNewNum)
             {
+                System.Diagnostics.Debug.WriteLine("입력 발생2!");
                 if (Opt == Operators.Add)
                     Result += num;
                 else if (Opt == Operators.Sub)
@@ -75,15 +79,23 @@ namespace HelloCsharpwin
             isNewNum = true;
 
             Button optButton = (Button)sender;
+            System.Diagnostics.Debug.WriteLine(optButton.Text);
+
+            Console.WriteLine(optButton.Text);
 
             if (optButton.Text == "+")
                 Opt = Operators.Add;
             else if (optButton.Text == "-")
                 Opt = Operators.Sub;
-            else if (optButton.Text == "x")
+            else if (optButton.Text == "x" || optButton.Text == "*")
                 Opt = Operators.Multi;
             else if (optButton.Text == "÷")
                 Opt = Operators.Div;
+            else
+                Opt = Operators.Nothing;
+                equalsBtn.Focus();
+
+
         }
 
         //Clear(초기화)
@@ -93,7 +105,7 @@ namespace HelloCsharpwin
             isNewNum = true;
             Opt = Operators.Nothing;
 
-            NumScreen.Text = "0";
+            NumScreen.Text = Result.ToString();
         }
 
         //Back(숫자 지움 처리)
@@ -186,44 +198,60 @@ namespace HelloCsharpwin
 
 
 
+        //키보드 입력 로직 구현
         private void Calculator_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode >= Keys.D0 && e.KeyCode <= Keys.D9)
+
+            System.Diagnostics.Debug.WriteLine(e.KeyCode);
+
+            
+            if (Control.ModifierKeys == Keys.Shift && e.KeyCode == Keys.D8) //수정된 조건
             {
-                SetNum((e.KeyCode - Keys.D0).ToString());
+                  OptBtn_Click(multiplyBtn, e);
             }
-            else if (e.KeyCode >= Keys.NumPad0 && e.KeyCode <= Keys.NumPad9)
+            else
             {
-                SetNum((e.KeyCode - Keys.NumPad0).ToString());
-            }
-            else if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Oemplus)
-            {
-                OptBtn_Click(plusBtn, e);
-            }
-            else if (e.KeyCode == Keys.Subtract || e.KeyCode == Keys.OemMinus)
-            {
-                OptBtn_Click(minusBtn, e);
-            }
-            else if ((e.KeyCode == Keys.Multiply) ||( (Control.ModifierKeys == Keys.Shift) && (e.KeyCode == Keys.D8)))
-            {
-                OptBtn_Click(multiplyBtn, e);
-            }
-            else if (e.KeyCode == Keys.Divide || e.KeyCode == Keys.OemQuestion)
-            {
-                OptBtn_Click(divBtn, e);
-            }
-            else if (e.KeyCode == Keys.Decimal || e.KeyCode == Keys.OemPeriod)
-            {
-                dotBtn_Click(dotBtn, e);
-            }
-            else if (e.KeyCode == Keys.Enter)
-            {
-                OptBtn_Click(equalsBtn, e);
-            }
-            else if (e.KeyCode == Keys.Back)
-            {
-                backBtn_Click(backBtn, e);
-            }
+
+                if (e.KeyCode >= Keys.D0 && e.KeyCode <= Keys.D9)
+                {
+                    SetNum((e.KeyCode - Keys.D0).ToString());
+                }
+                else if (e.KeyCode >= Keys.NumPad0 && e.KeyCode <= Keys.NumPad9)
+                {
+                    SetNum((e.KeyCode - Keys.NumPad0).ToString());
+                }
+                else if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Oemplus)
+                {
+                    OptBtn_Click(plusBtn, e);
+                }
+                else if (e.KeyCode == Keys.Subtract || e.KeyCode == Keys.OemMinus)
+                {
+                    OptBtn_Click(minusBtn, e);
+                }
+                else if (e.KeyCode == Keys.Multiply)
+                {
+                    OptBtn_Click(multiplyBtn, e);
+                }
+                else if (e.KeyCode == Keys.Divide || e.KeyCode == Keys.OemQuestion)
+                {
+                    OptBtn_Click(divBtn, e);
+                }
+                else if (e.KeyCode == Keys.Decimal || e.KeyCode == Keys.OemPeriod)
+                {
+                    dotBtn_Click(dotBtn, e);
+                }
+                else if (e.KeyCode == Keys.Return || e.KeyCode == Keys.Enter)
+                {
+                    OptBtn_Click(equalsBtn, e);
+                }
+                else if (e.KeyCode == Keys.Back)
+                {
+                    backBtn_Click(backBtn, e);
+                }
+
+             }
+
+            
         }
 
     }
