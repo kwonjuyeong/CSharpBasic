@@ -185,68 +185,46 @@ namespace HelloCsharpwin
         }
 
 
-        private void Caculator_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Back)
-            {
-                backBtn_Click(sender, e);
-            }
-            else if (e.KeyData == Keys.Enter)
-            {
-                OptBtn_Click(sender, e);
-            }
-            else if (e.KeyData == Keys.Oemplus)
-            {
-                OptBtn_Click(Operators.Add, e);
-            }
-            else if (e.KeyCode == Keys.Decimal || e.KeyCode == Keys.OemPeriod) // 소수점 키
-            {
-                dotBtn_Click(sender, e);
-            }
 
-        }
-
-
-
-        /*
-        //키보드 기능 수정해야됨
         private void Calculator_KeyDown(object sender, KeyEventArgs e)
         {
-            // 숫자 키패드 입력 처리
-            if (e.KeyCode >= Keys.NumPad0 && e.KeyCode <= Keys.NumPad9)
+            if (e.KeyCode >= Keys.D0 && e.KeyCode <= Keys.D9)
             {
-                int num = e.KeyCode - Keys.NumPad0;
-                SetNum(num.ToString());
+                SetNum((e.KeyCode - Keys.D0).ToString());
             }
-            else if (e.KeyCode == Keys.Decimal || e.KeyCode == Keys.OemPeriod) // 소수점 키
+            else if (e.KeyCode >= Keys.NumPad0 && e.KeyCode <= Keys.NumPad9)
             {
-                dotBtn_Click(sender, e);
+                SetNum((e.KeyCode - Keys.NumPad0).ToString());
             }
-            // 사칙연산 입력 처리
             else if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Oemplus)
             {
-                OptBtn_Click(plus, e); 
+                OptBtn_Click(plusBtn, e);
             }
             else if (e.KeyCode == Keys.Subtract || e.KeyCode == Keys.OemMinus)
             {
-                OptBtn_Click(minus, e); 
+                OptBtn_Click(minusBtn, e);
             }
-            else if (e.KeyCode == Keys.Multiply) 
+            else if ((e.KeyCode == Keys.Multiply) ||( (Control.ModifierKeys == Keys.Shift) && (e.KeyCode == Keys.D8)))
             {
-                OptBtn_Click(multi, e); 
+                OptBtn_Click(multiplyBtn, e);
             }
-            else if (e.KeyCode == Keys.Divide || e.KeyCode == Keys.OemBackslash) 
+            else if (e.KeyCode == Keys.Divide || e.KeyCode == Keys.OemQuestion)
             {
-                OptBtn_Click(div, e);
+                OptBtn_Click(divBtn, e);
             }
-            //등호
+            else if (e.KeyCode == Keys.Decimal || e.KeyCode == Keys.OemPeriod)
+            {
+                dotBtn_Click(dotBtn, e);
+            }
             else if (e.KeyCode == Keys.Enter)
             {
-                string expression = NumScreen.Text;
-                NumScreen.Text = expression;
-                isNewNum = true;
+                OptBtn_Click(equalsBtn, e);
             }
-        }*/
+            else if (e.KeyCode == Keys.Back)
+            {
+                backBtn_Click(backBtn, e);
+            }
+        }
 
     }
 }
