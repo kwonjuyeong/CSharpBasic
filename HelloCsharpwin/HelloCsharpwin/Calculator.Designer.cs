@@ -297,6 +297,7 @@
             ClearBtn.Text = "C";
             ClearBtn.UseVisualStyleBackColor = true;
             ClearBtn.Click += ClearBtn_Click;
+            ClearBtn.KeyDown += Calculator_KeyDown;
             // 
             // rootBtn
             // 
