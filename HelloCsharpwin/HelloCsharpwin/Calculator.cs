@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System;
+using System.Xml.Linq;
 
 namespace HelloCsharpwin
 {
@@ -8,13 +9,13 @@ namespace HelloCsharpwin
     Season currentSeason = Season.Spring;
     */
 
-    public enum Operators {Nothing, Add, Sub, Multi, Div}
+    public enum Operators {None, Add, Sub, Multi, Div}
 
     public partial class Calculator : Form
     {
         public double Result = 0;
         public bool isNewNum = true;
-        public Operators Opt = Operators.Nothing;
+        public Operators Opt = Operators.None;
 
         public Calculator()
         {
@@ -26,14 +27,14 @@ namespace HelloCsharpwin
         private void NumButton_Click(object sender, EventArgs e)
         {
             Button numButton = (Button)sender;
-            SetNum(numButton.Text);
+            string num = numButton.Text;
+            SetNum(num);
         }
 
 
-        //숫자 입력 처리 메소드
+        //숫자 입력 처리
         public void SetNum(string num)
         {
-            System.Diagnostics.Debug.WriteLine(isNewNum);
 
             if (isNewNum)
             {
@@ -50,7 +51,6 @@ namespace HelloCsharpwin
             }
 
             FormatNumber();
-
         }
 
 
@@ -60,7 +60,7 @@ namespace HelloCsharpwin
 
             double num = double.Parse(NumScreen.Text);
 
-            if (Opt != Operators.Nothing && !isNewNum)
+            if (Opt != Operators.None && !isNewNum)
             {
                 if (Opt == Operators.Add)
                     Result += num;
@@ -80,21 +80,35 @@ namespace HelloCsharpwin
             isNewNum = true;
 
             Button optButton = (Button)sender;
-            System.Diagnostics.Debug.WriteLine(optButton.Text);
+            string opt = optButton.Text;
 
-            Console.WriteLine(optButton.Text);
-
-            if (optButton.Text == "+")
-                Opt = Operators.Add;
-            else if (optButton.Text == "-")
-                Opt = Operators.Sub;
-            else if (optButton.Text == "x" || optButton.Text == "*")
-                Opt = Operators.Multi;
-            else if (optButton.Text == "÷")
-                Opt = Operators.Div;
+            if (opt == "=")
+            {
+                SetExpression(num + " " + opt);
+                isNewNum = true;
+            }
             else
-                Opt = Operators.Nothing;
-                equalsBtn.Focus();
+            {
+                if(isNewNum = true)
+                {
+                    expressionScreen.Text = "";
+                }
+                SetExpression(" " + NumScreen.Text + " " + opt + " "); // "+" 버튼 클릭 시 수식 라벨에 연산자 추가
+
+                if (opt == "+")
+                    Opt = Operators.Add;
+                else if (opt == "-")
+                    Opt = Operators.Sub;
+                else if (opt == "x" || opt == "*")
+                    Opt = Operators.Multi;
+                else if (opt == "÷")
+                    Opt = Operators.Div;
+                else
+                    Opt = Operators.None;
+                    equalsBtn.Focus();
+
+            }
+           
 
         }
 
@@ -102,10 +116,12 @@ namespace HelloCsharpwin
         private void ClearBtn_Click(object sender, EventArgs e)
         {
             Result = 0;
-            Opt = Operators.Nothing;
+            Opt = Operators.None;
             isNewNum = true;
             NumScreen.Text = Result.ToString();
-            
+            SetExpression("");
+            expressionScreen.Text = "";
+
         }
 
         //Back(숫자 지움 처리)
@@ -197,6 +213,7 @@ namespace HelloCsharpwin
         }
 
 
+        //천의 자릿 수(,)
         private void FormatNumber()
         {
             double parsedNumber;
@@ -204,6 +221,19 @@ namespace HelloCsharpwin
             {
                 NumScreen.Text = parsedNumber.ToString("#,###");
             }
+        }
+
+        //수식 표시
+        private void SetExpression(string expression)
+        {
+            if (expression == "") {
+                expressionScreen.Text = Result.ToString();
+            }
+            else
+            {
+                expressionScreen.Text += expression; // 수식을 표시하는 Label에 사용자 입력값 추가
+            }
+
         }
 
 
