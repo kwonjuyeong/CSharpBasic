@@ -49,6 +49,8 @@ namespace HelloCsharpwin
                 NumScreen.Text += num;
             }
 
+            FormatNumber();
+
         }
 
 
@@ -74,7 +76,7 @@ namespace HelloCsharpwin
                 Result = num;
             }
 
-            NumScreen.Text = Result.ToString();
+            NumScreen.Text = Result.ToString("#,###");
             isNewNum = true;
 
             Button optButton = (Button)sender;
@@ -192,6 +194,16 @@ namespace HelloCsharpwin
         {
             NumScreen.Text = "0";
             isNewNum = true;
+        }
+
+
+        private void FormatNumber()
+        {
+            double parsedNumber;
+            if (double.TryParse(NumScreen.Text, out parsedNumber))
+            {
+                NumScreen.Text = parsedNumber.ToString("#,###");
+            }
         }
 
 
