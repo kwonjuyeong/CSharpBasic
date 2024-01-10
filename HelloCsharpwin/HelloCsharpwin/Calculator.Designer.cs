@@ -331,6 +331,7 @@
             OneOverXBtn.Text = "1/𝓍";
             OneOverXBtn.UseVisualStyleBackColor = true;
             OneOverXBtn.Click += OneOverXBtn_Click;
+            OneOverXBtn.KeyDown += Calculator_KeyDown;
             // 
             // backBtn
             // 

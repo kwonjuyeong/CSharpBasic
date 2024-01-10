@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Runtime.Serialization;
 using System.Xml.Linq;
 
 namespace HelloCsharpwin
@@ -26,22 +28,25 @@ namespace HelloCsharpwin
         //숫자 버튼 클릭 이벤트
         private void NumButton_Click(object sender, EventArgs e)
         {
+
             Button numButton = (Button)sender;
             string num = numButton.Text;
+
+            
             SetNum(num);
         }
-
 
         //숫자 입력 처리
         public void SetNum(string num)
         {
+            System.Diagnostics.Debug.WriteLine(NumScreen);
 
             if (isNewNum)
             {
                 NumScreen.Text = num;
                 isNewNum = false;
             }
-            else if(NumScreen.Text == "0")
+            else if (NumScreen.Text == "0")
             {
                 NumScreen.Text = num;
             }
@@ -49,7 +54,6 @@ namespace HelloCsharpwin
             {
                 NumScreen.Text += num;
             }
-
             FormatNumber();
         }
 
@@ -76,20 +80,20 @@ namespace HelloCsharpwin
                 Result = num;
             }
 
-            NumScreen.Text = Result.ToString("#,###");
+            NumScreen.Text = Result.ToString("#,##0.#########");
             isNewNum = true;
 
             Button optButton = (Button)sender;
             string opt = optButton.Text;
 
-            if (opt == "=")
+            if (opt == "=") // =일때 조건 추가
             {
                 SetExpression(num + " " + opt);
                 isNewNum = true;
             }
             else
             {
-                if(isNewNum = true)
+                if(isNewNum) //isNewNum이 true이면 수식 라벨 초기화
                 {
                     expressionScreen.Text = "";
                 }
@@ -109,7 +113,6 @@ namespace HelloCsharpwin
 
             }
            
-
         }
 
         //Clear(초기화)
@@ -119,7 +122,6 @@ namespace HelloCsharpwin
             Opt = Operators.None;
             isNewNum = true;
             NumScreen.Text = Result.ToString();
-            SetExpression("");
             expressionScreen.Text = "";
 
         }
@@ -141,7 +143,7 @@ namespace HelloCsharpwin
             if (double.TryParse(NumScreen.Text, out double currentNumber))
             {
                 currentNumber *= -1;
-                NumScreen.Text = currentNumber.ToString();
+                NumScreen.Text = currentNumber.ToString("#,##0.#########");
                 Result = currentNumber; // 연산 결과인 Result도 부호 변경
             }
             else
@@ -150,17 +152,38 @@ namespace HelloCsharpwin
             }
         }
 
-        //역수 처리
+
+        // 역수 처리
         private void OneOverXBtn_Click(object sender, EventArgs e)
         {
+            double inputNumber = double.Parse(NumScreen.Text);
+            double inverse = 1.0 / inputNumber;
+
             if (!isNewNum)
             {
-                double inputNumber = Double.Parse(NumScreen.Text);
-                double inverse = 1.0 / inputNumber;
-                NumScreen.Text = inverse.ToString();
-                isNewNum = true;
+                string lastExpression = expressionScreen.Text.Substring(expressionScreen.Text.LastIndexOf(' ') + 1);
+                if (lastExpression.Contains("1/("))
+                {
+                    expressionScreen.Text = expressionScreen.Text.Substring(0, expressionScreen.Text.LastIndexOf("1/("));
+                }
+                else
+                {
+                    string currentExpression = expressionScreen.Text;
+                    expressionScreen.Text = currentExpression + " ";
+                }
             }
+            else
+            {
+                expressionScreen.Text = "";
+            }
+
+            expressionScreen.Text += "1/(" + NumScreen.Text + ")";
+            NumScreen.Text = inverse.ToString("#,##0.#########");
+            isNewNum = true;
+            Opt = Operators.None; // 사칙 연산 초기화
+ 
         }
+
 
 
         // 소수점 처리
@@ -170,14 +193,17 @@ namespace HelloCsharpwin
                 return;
             else
                 NumScreen.Text += ".";
+                
+
         }
+
 
         //제곱 처리
         private void SqrBtn_Click(object sender, EventArgs e)
         {
             double num = double.Parse(NumScreen.Text);
             double result = num * num;
-            NumScreen.Text = result.ToString();
+            NumScreen.Text = result.ToString("#,##0.#########");
             Result = result;
 
         }
@@ -187,7 +213,7 @@ namespace HelloCsharpwin
         {
             double num = double.Parse(NumScreen.Text);
             double result = Math.Sqrt(num); // 제곱근 계산
-            NumScreen.Text = result.ToString();
+            NumScreen.Text = result.ToString("#,##0.#########");
             Result = result;
 
         }
@@ -200,7 +226,7 @@ namespace HelloCsharpwin
                 double num = double.Parse(NumScreen.Text);
                 double percent = num / 100.0;
                 double result = Result + (Result * percent); // 이전 결과에 퍼센트를 더함
-                NumScreen.Text = result.ToString();
+                NumScreen.Text = result.ToString("#,##0.#########");
                 isNewNum = true;
             }
         }
@@ -214,14 +240,24 @@ namespace HelloCsharpwin
 
 
         //천의 자릿 수(,)
+       
         private void FormatNumber()
         {
-            double parsedNumber;
-            if (double.TryParse(NumScreen.Text, out parsedNumber))
+            if (!string.IsNullOrEmpty(NumScreen.Text))
             {
-                NumScreen.Text = parsedNumber.ToString("#,###");
+                string[] parts = NumScreen.Text.Split('.');
+                if (parts.Length == 2)
+                {
+                    parts[1] = parts[1].PadRight(1, '0'); // 최대 소수점 이하 9자리까지 표시
+                    NumScreen.Text = $"{double.Parse(parts[0]):#,##0}.{parts[1]}";
+                }
+                else
+                {
+                    NumScreen.Text = $"{double.Parse(NumScreen.Text):#,##0}";
+                }
             }
         }
+
 
         //수식 표시
         private void SetExpression(string expression)
@@ -237,12 +273,9 @@ namespace HelloCsharpwin
         }
 
 
-
         //키보드 입력 로직 구현
         private void Calculator_KeyDown(object sender, KeyEventArgs e)
         {
-         
-            System.Diagnostics.Debug.WriteLine(e.KeyCode);
 
             if (Control.ModifierKeys == Keys.Shift && e.KeyCode == Keys.D8)
             {
