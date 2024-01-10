@@ -127,12 +127,12 @@ namespace HelloCsharpwin
         }
 
         //Back(숫자 지움 처리)
-        //예외처리 : 글자 길이가 1보다 작으면 0으로 변경
+        
         private void backBtn_Click(object sender, EventArgs e)
         {
             if (NumScreen.Text.Length > 1)
                 NumScreen.Text = NumScreen.Text.Substring(0, NumScreen.Text.Length - 1);
-            else
+            else //예외처리 : 글자 길이가 1보다 작으면 0으로 변경
                 NumScreen.Text = "0";
 
         }
@@ -189,13 +189,17 @@ namespace HelloCsharpwin
         // 소수점 처리
         private void dotBtn_Click(object sender, EventArgs e)
         {
-            if (NumScreen.Text.Contains("."))
-                return;
-            else
+            if (isNewNum)
+            {
+                NumScreen.Text = "0.";
+                isNewNum = false;
+            }
+            else if (!NumScreen.Text.Contains("."))
+            {
                 NumScreen.Text += ".";
-                
-
+            }
         }
+    
 
 
         //제곱 처리
@@ -248,7 +252,7 @@ namespace HelloCsharpwin
                 string[] parts = NumScreen.Text.Split('.');
                 if (parts.Length == 2)
                 {
-                    parts[1] = parts[1].PadRight(1, '0'); // 최대 소수점 이하 9자리까지 표시
+                    parts[1] = parts[1].PadRight(1, '0'); // 오른쪽에 추가
                     NumScreen.Text = $"{double.Parse(parts[0]):#,##0}.{parts[1]}";
                 }
                 else
