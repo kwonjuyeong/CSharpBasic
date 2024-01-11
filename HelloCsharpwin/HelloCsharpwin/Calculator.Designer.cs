@@ -286,6 +286,7 @@
             switchPM.Text = "+/-";
             switchPM.UseVisualStyleBackColor = false;
             switchPM.Click += switchPM_Click;
+            switchPM.KeyDown += Calculator_KeyDown;
             // 
             // ClearBtn
             // 
@@ -309,6 +310,7 @@
             rootBtn.Text = "²√𝓍";
             rootBtn.UseVisualStyleBackColor = true;
             rootBtn.Click += rootBtn_Click;
+            rootBtn.KeyDown += Calculator_KeyDown;
             // 
             // SqrBtn
             // 
@@ -320,6 +322,7 @@
             SqrBtn.Text = "𝓍²";
             SqrBtn.UseVisualStyleBackColor = true;
             SqrBtn.Click += SqrBtn_Click;
+            SqrBtn.KeyDown += Calculator_KeyDown;
             // 
             // OneOverXBtn
             // 
@@ -355,6 +358,7 @@
             CEBtn.Text = "CE";
             CEBtn.UseVisualStyleBackColor = true;
             CEBtn.Click += CEBtn_Click;
+            CEBtn.KeyDown += Calculator_KeyDown;
             // 
             // PercentBtn
             // 
@@ -366,6 +370,7 @@
             PercentBtn.Text = "%";
             PercentBtn.UseVisualStyleBackColor = true;
             PercentBtn.Click += PercentBtn_Click;
+            PercentBtn.KeyDown += Calculator_KeyDown;
             // 
             // expressionScreen
             // 
@@ -384,7 +389,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(379, 493);
+            ClientSize = new Size(378, 497);
             Controls.Add(expressionScreen);
             Controls.Add(PercentBtn);
             Controls.Add(CEBtn);

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Diagnostics;
 using System.Runtime.Serialization;
 using System.Xml.Linq;
@@ -31,7 +32,6 @@ namespace HelloCsharpwin
 
             Button numButton = (Button)sender;
             string num = numButton.Text;
-
             
             SetNum(num);
         }
@@ -80,7 +80,7 @@ namespace HelloCsharpwin
                 Result = num;
             }
 
-            NumScreen.Text = Result.ToString("#,##0.#########");
+            NumScreen.Text = Result.ToString("#,##0.############");
             isNewNum = true;
 
             Button optButton = (Button)sender;
@@ -143,7 +143,7 @@ namespace HelloCsharpwin
             if (double.TryParse(NumScreen.Text, out double currentNumber))
             {
                 currentNumber *= -1;
-                NumScreen.Text = currentNumber.ToString("#,##0.#########");
+                NumScreen.Text = currentNumber.ToString("#,##0.############");
                 Result = currentNumber; // 연산 결과인 Result도 부호 변경
             }
             else
@@ -151,39 +151,6 @@ namespace HelloCsharpwin
                 NumScreen.Text = "0";
             }
         }
-
-
-        // 역수 처리
-        private void OneOverXBtn_Click(object sender, EventArgs e)
-        {
-            double num = double.Parse(NumScreen.Text);
-            double inverse = 1.0 / num;
-
-            if (!isNewNum)
-            {
-                string lastExpression = expressionScreen.Text.Substring(expressionScreen.Text.LastIndexOf(' ') + 1);
-                if (lastExpression.Contains("1/("))
-                {
-                    expressionScreen.Text = expressionScreen.Text.Substring(0, expressionScreen.Text.LastIndexOf("1/("));
-                }
-                else
-                {
-                    string currentExpression = expressionScreen.Text;
-                    expressionScreen.Text = currentExpression + " ";
-                }
-            }
-            else
-            {
-                expressionScreen.Text = "";
-            }
-
-            expressionScreen.Text += "1/(" + NumScreen.Text + ")";
-            NumScreen.Text = inverse.ToString("#,##0.#########");
-            isNewNum = true;
-            Opt = Operators.None; // 사칙 연산 초기화
- 
-        }
-
 
 
         // 소수점 처리
@@ -201,77 +168,25 @@ namespace HelloCsharpwin
         }
 
 
+        // 역수 처리
+        private void OneOverXBtn_Click(object sender, EventArgs e)
+        {
+            SetExpressionText("1/(");
+        }
+
 
         //제곱 처리
         private void SqrBtn_Click(object sender, EventArgs e)
         {
-            double num = double.Parse(NumScreen.Text);
-            double result = num * num;
-            NumScreen.Text = result.ToString("#,##0.#########");
-            Result = result;
-
-            if (!isNewNum)
-            {
-                string lastExpression = expressionScreen.Text.Substring(expressionScreen.Text.LastIndexOf(' ') + 1);
-                if (lastExpression.Contains("²"))
-                {
-                    expressionScreen.Text = expressionScreen.Text.Substring(0, expressionScreen.Text.LastIndexOf("²"));
-                }
-                else
-                {
-                    string currentExpression = expressionScreen.Text;
-                    expressionScreen.Text = currentExpression + " ";
-                }
-            }
-            else
-            {
-                expressionScreen.Text = "";
-            }
-
-            expressionScreen.Text += num + "²";
-            isNewNum = true;
-            Opt = Operators.None; // 사칙 연산 초기화
+            SetExpressionText("²");
+           
         }
-
-
-
-
-
-
-
 
 
         //제곱근 계산
         private void rootBtn_Click(object sender, EventArgs e)
         {
-            double num = double.Parse(NumScreen.Text);
-            double result = Math.Sqrt(num); // 제곱근 계산
-            NumScreen.Text = result.ToString("#,##0.#########");
-            Result = result;
-
-
-            if (!isNewNum)
-            {
-                string lastExpression = expressionScreen.Text.Substring(expressionScreen.Text.LastIndexOf(' ') + 1);
-                if (lastExpression.Contains("²√"))
-                {
-                    expressionScreen.Text = expressionScreen.Text.Substring(0, expressionScreen.Text.LastIndexOf("²√"));
-                }
-                else
-                {
-                    string currentExpression = expressionScreen.Text;
-                    expressionScreen.Text = currentExpression + " ";
-                }
-            }
-            else
-            {
-                expressionScreen.Text = "";
-            }
-
-            expressionScreen.Text += "²√" + num;
-            isNewNum = true;
-            Opt = Operators.None; // 사칙 연산 초기화
-
+            SetExpressionText("²√");
 
         }
 
@@ -283,10 +198,11 @@ namespace HelloCsharpwin
                 double num = double.Parse(NumScreen.Text);
                 double percent = num / 100.0;
                 double result = Result + (Result * percent); // 이전 결과에 퍼센트를 더함
-                NumScreen.Text = result.ToString("#,##0.#########");
+                NumScreen.Text = result.ToString("#,##0.############");
                 isNewNum = true;
             }
         }
+
 
         // CE(현재 입력된 숫자 삭제)
         private void CEBtn_Click(object sender, EventArgs e)
@@ -294,6 +210,7 @@ namespace HelloCsharpwin
             NumScreen.Text = "0";
             isNewNum = true;
         }
+
 
 
         //천의 자릿 수(,)
@@ -324,9 +241,98 @@ namespace HelloCsharpwin
             }
             else
             {
-                expressionScreen.Text += expression; // 수식을 표시하는 Label에 사용자 입력값 추가
+                expressionScreen.Text += expression;
             }
 
+        }
+
+
+        private void SetExpressionText(string sign)
+        {
+            double num = double.Parse(NumScreen.Text);
+            double result = 0.0;
+
+            
+
+            // 수식 추가 및 초기화 로직 간소화
+            if (!isNewNum)
+            {
+                string lastExpression = expressionScreen.Text.Substring(expressionScreen.Text.LastIndexOf(' ') + 1);
+                if (lastExpression.Contains(sign))
+                {
+                    expressionScreen.Text = expressionScreen.Text.Substring(0, expressionScreen.Text.LastIndexOf(sign));
+                }
+                else
+                {
+                    expressionScreen.Text += " ";
+                }
+            }
+            else
+            {
+                expressionScreen.Text = "";
+            }
+
+            // 연산 로직을 간결하게 표현
+            switch (sign)
+            {
+                case "1/(":
+                    result = 1.0 / num;
+                    expressionScreen.Text = $"1/({num})";
+                    break;
+                case
+                    "²":
+                    result = num * num;
+                    expressionScreen.Text = $"{num}²";
+                    break;
+                case "²√":
+                    result = Math.Sqrt(num);
+                    expressionScreen.Text = $"²√{num}";
+                    break;
+               
+            }
+
+            result = RoundCustom(result, 12);
+            NumScreen.Text = result.ToString("#,##0.############");
+            isNewNum = true;
+            Opt = Operators.None;
+        }
+
+
+        private double RoundCustom(double value, int decimals)
+        {
+            string stringValue = value.ToString($"F{decimals}");
+            int indexOfDecimal = stringValue.IndexOf('.');
+
+            if (indexOfDecimal != -1)
+            {
+                string decimalPart = stringValue.Substring(indexOfDecimal + 1);
+
+                // 내림 처리
+                if (decimalPart.Contains("0000"))
+                {
+                    return Math.Floor(value * Math.Pow(10, decimals - 4)) / Math.Pow(10, decimals - 4);
+                }
+
+                // 올림 처리
+                if (decimalPart.Contains("9999"))
+                {
+                    return Math.Ceiling(value * Math.Pow(10, decimals - 4)) / Math.Pow(10, decimals - 4);
+                }
+            }
+
+            // 정수에 대한 올림 처리
+            if (value >= 0 && value % 1 == 0 && value.ToString().Length >= 7)
+            {
+                return Math.Ceiling(value);
+            }
+
+            // 정수에 대한 내림 처리
+            if (value < 0 && value % 1 == 0 && value.ToString().Length >= 8)
+            {
+                return Math.Floor(value);
+            }
+
+            return Math.Round(value, decimals);
         }
 
 
