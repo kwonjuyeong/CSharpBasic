@@ -156,8 +156,8 @@ namespace HelloCsharpwin
         // 역수 처리
         private void OneOverXBtn_Click(object sender, EventArgs e)
         {
-            double inputNumber = double.Parse(NumScreen.Text);
-            double inverse = 1.0 / inputNumber;
+            double num = double.Parse(NumScreen.Text);
+            double inverse = 1.0 / num;
 
             if (!isNewNum)
             {
@@ -199,7 +199,7 @@ namespace HelloCsharpwin
                 NumScreen.Text += ".";
             }
         }
-    
+
 
 
         //제곱 처리
@@ -210,7 +210,36 @@ namespace HelloCsharpwin
             NumScreen.Text = result.ToString("#,##0.#########");
             Result = result;
 
+            if (!isNewNum)
+            {
+                string lastExpression = expressionScreen.Text.Substring(expressionScreen.Text.LastIndexOf(' ') + 1);
+                if (lastExpression.Contains("²"))
+                {
+                    expressionScreen.Text = expressionScreen.Text.Substring(0, expressionScreen.Text.LastIndexOf("²"));
+                }
+                else
+                {
+                    string currentExpression = expressionScreen.Text;
+                    expressionScreen.Text = currentExpression + " ";
+                }
+            }
+            else
+            {
+                expressionScreen.Text = "";
+            }
+
+            expressionScreen.Text += num + "²";
+            isNewNum = true;
+            Opt = Operators.None; // 사칙 연산 초기화
         }
+
+
+
+
+
+
+
+
 
         //제곱근 계산
         private void rootBtn_Click(object sender, EventArgs e)
@@ -219,6 +248,30 @@ namespace HelloCsharpwin
             double result = Math.Sqrt(num); // 제곱근 계산
             NumScreen.Text = result.ToString("#,##0.#########");
             Result = result;
+
+
+            if (!isNewNum)
+            {
+                string lastExpression = expressionScreen.Text.Substring(expressionScreen.Text.LastIndexOf(' ') + 1);
+                if (lastExpression.Contains("²√"))
+                {
+                    expressionScreen.Text = expressionScreen.Text.Substring(0, expressionScreen.Text.LastIndexOf("²√"));
+                }
+                else
+                {
+                    string currentExpression = expressionScreen.Text;
+                    expressionScreen.Text = currentExpression + " ";
+                }
+            }
+            else
+            {
+                expressionScreen.Text = "";
+            }
+
+            expressionScreen.Text += "²√" + num;
+            isNewNum = true;
+            Opt = Operators.None; // 사칙 연산 초기화
+
 
         }
 
