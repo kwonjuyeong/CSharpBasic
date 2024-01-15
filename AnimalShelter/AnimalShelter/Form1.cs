@@ -1,9 +1,15 @@
+using System.Collections;
+
 namespace AnimalShelter
 {
     public partial class Form1 : Form
     {
-        public Customer[] CustomerArray = new Customer[10];
+        /*public Customer[] CustomerArray = new Customer[10];
         public int CustomerArrayIndex = 0;
+        */
+
+        public List<Customer> Customers = new List<Customer>();
+
 
         public Form1()
         {
@@ -60,14 +66,21 @@ namespace AnimalShelter
             numberTwo = numberOne++;
             */
 
-            CustomerArray[CustomerArrayIndex] = new Customer(CusNewFirstName.Text, CusNewLastName.Text, DateTime.Parse(CusNewBirthday.Text));
-            CustomerArray[CustomerArrayIndex].Address = CusNewAddress.Text;
-            CustomerArray[CustomerArrayIndex].Description = CusNewDescription.Text;
+            Customer cus = new Customer(CusNewFirstName.Text, CusNewLastName.Text,
+                DateTime.Parse(CusNewBirthday.Text));
 
-            CustomerList.Items.Add(CustomerArray[CustomerArrayIndex].FirstName);
+            cus.Address = CusNewAddress.Text;
+            cus.Description = CusNewDescription.Text;
 
-            CustomerArrayIndex++;
+            CusList.Rows.Add(cus.FirstName, cus.Age, cus.IsQulified);
 
+            Customers.Add(cus);
+
+            CusNewFirstName.Text = "";
+            CusNewLastName.Text = "";
+            CusNewBirthday.Text = "";
+            CusNewAddress.Text = "";
+            CusNewDescription.Text = "";
         }
 
 
@@ -80,10 +93,24 @@ namespace AnimalShelter
             CusIsQualified.Text = cus.IsQulified.ToString();
         }
 
-        private void CustomerList_Click(object sender, EventArgs e)
+        private void CusList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string firstName = CustomerList.SelectedItem.ToString();
-            for(int index = 0; index < CustomerArrayIndex; index++)
+
+            string firstName = (string)CusList.Rows[e.RowIndex].Cells[0].Value;
+
+            foreach (Customer cus in Customers)
+            {
+                if (cus.FirstName == firstName)
+                {
+                    ShowDetails(cus);
+                    break;
+                }
+            }
+            CusDetailPanel.Show();
+            CusNewPanel.Hide();
+
+            /*
+            for (int index = 0; index < CustomerArrayIndex; index++)
             {
                 if (CustomerArray[index].FirstName == firstName)
                 {
@@ -91,7 +118,21 @@ namespace AnimalShelter
                     break;
                 }
 
-            }
+            }*/
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            CusListPanel.Dock = DockStyle.Fill;
+            CusDetailPanel.Dock = DockStyle.Right;
+            CusNewPanel.Dock = DockStyle.Right;
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CusNewPanel.Show();
+            CusDetailPanel.Hide();  
         }
     }
 }
