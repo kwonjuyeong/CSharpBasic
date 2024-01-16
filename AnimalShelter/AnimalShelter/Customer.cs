@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -17,6 +19,45 @@ namespace AnimalShelter
         private bool _IsQulified;
         public string Address;
         public string Description;
+
+        private Cat _MyCat;
+        public Cat MyCat
+        {
+            get { return _MyCat; }
+        }
+
+        public bool Adopt(Cat cat)
+        {
+            if (_IsQulified)
+            {
+                _MyCat = cat;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private Dog _MyDog;
+        public Dog MyDog
+        {
+            get { return _MyDog; }
+        }
+
+        public bool Adopt(Dog dog)
+        {
+            if (_IsQulified)
+            {
+                _MyDog = dog;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
         public Customer(string firstName, string lastName, DateTime birthday)
         {

@@ -30,6 +30,8 @@
         {
             CreateCustomer = new Button();
             CusDetailPanel = new Panel();
+            CusPetInfo = new Label();
+            label12 = new Label();
             CusIsQualified = new Label();
             label2 = new Label();
             CusDescription = new Label();
@@ -77,6 +79,8 @@
             // 
             // CusDetailPanel
             // 
+            CusDetailPanel.Controls.Add(CusPetInfo);
+            CusDetailPanel.Controls.Add(label12);
             CusDetailPanel.Controls.Add(CusIsQualified);
             CusDetailPanel.Controls.Add(label2);
             CusDetailPanel.Controls.Add(CusDescription);
@@ -91,6 +95,24 @@
             CusDetailPanel.Name = "CusDetailPanel";
             CusDetailPanel.Size = new Size(287, 391);
             CusDetailPanel.TabIndex = 1;
+            // 
+            // CusPetInfo
+            // 
+            CusPetInfo.AutoSize = true;
+            CusPetInfo.Location = new Point(90, 175);
+            CusPetInfo.Name = "CusPetInfo";
+            CusPetInfo.Size = new Size(39, 15);
+            CusPetInfo.TabIndex = 13;
+            CusPetInfo.Text = "label2";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(20, 176);
+            label12.Name = "label12";
+            label12.Size = new Size(19, 15);
+            label12.TabIndex = 12;
+            label12.Text = "펫";
             // 
             // CusIsQualified
             // 
@@ -326,7 +348,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1 });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(773, 24);
+            menuStrip1.Size = new Size(1014, 24);
             menuStrip1.TabIndex = 11;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -342,7 +364,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(773, 425);
+            ClientSize = new Size(1014, 425);
             Controls.Add(CusListPanel);
             Controls.Add(CusNewPanel);
             Controls.Add(CusDetailPanel);
@@ -395,5 +417,7 @@
         private DataGridViewTextBoxColumn Column3;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem toolStripMenuItem1;
+        private Label CusPetInfo;
+        private Label label12;
     }
 }

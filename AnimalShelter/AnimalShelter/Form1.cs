@@ -91,11 +91,16 @@ namespace AnimalShelter
             CusAddress.Text = cus.Address;
             CusDescription.Text = cus.Description;
             CusIsQualified.Text = cus.IsQulified.ToString();
+
+            if (cus.MyCat != null)
+                CusPetInfo.Text = cus.MyCat.Name + " : " + cus.MyCat.MakeSound() + Environment.NewLine;
+
+            if (cus.MyDog != null)
+                CusPetInfo.Text = cus.MyDog.Name + " : " + cus.MyDog.MakeSound();
         }
 
         private void CusList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
             string firstName = (string)CusList.Rows[e.RowIndex].Cells[0].Value;
 
             foreach (Customer cus in Customers)
@@ -127,12 +132,42 @@ namespace AnimalShelter
             CusListPanel.Dock = DockStyle.Fill;
             CusDetailPanel.Dock = DockStyle.Right;
             CusNewPanel.Dock = DockStyle.Right;
+
+            Customer cus = new Customer("Ian", "Na", new DateTime(1990, 1, 2));
+            Cat cat = new Cat(1, "Lucas", "White", "Male");
+            cus.Adopt(cat);
+
+            Dog dog = new Dog(2, "Happy", "Black", "Male", DogBreed.Yorkshire);
+            cus.Adopt(dog);
+
+            Customers.Add(cus);
+            CusList.Rows.Add(cus.FirstName, cus.Age, cus.IsQulified);
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             CusNewPanel.Show();
-            CusDetailPanel.Hide();  
+            CusDetailPanel.Hide();
+
+            /*
+            //크기가 주어져야한다는 단점
+            Customer[] cusArray = new Customer[10];
+            cusArray[0] = new Customer("First", "Last", new DateTime(2000, 2, 2));
+        
+            foreach ( Customer cus in cusArray) {
+                string fullName = cus.FullName;
+            }
+
+            //형변환이 일어나야된다는 단점
+            ArrayList cusArrayList = new ArrayList();
+            cusArrayList.Add(new Customer("First", "Last", new DateTime(2000, 2, 2)));
+
+            //보통 많이 사용
+            List<Customer> cusList = new List<Customer>();
+            cusList.Add(new Customer("First", "Last", new DateTime(2000, 2, 2)));
+            */
+
         }
+
     }
 }
