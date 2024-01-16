@@ -20,17 +20,17 @@ namespace AnimalShelter
         public string Address;
         public string Description;
 
-        private Cat _MyCat;
-        public Cat MyCat
+        private List<Cat> _MyCats = new List<Cat>();
+        public List<Cat> MyCats
         {
-            get { return _MyCat; }
+            get { return _MyCats; }
         }
 
         public bool Adopt(Cat cat)
         {
             if (_IsQulified)
             {
-                _MyCat = cat;
+                _MyCats.Add(cat);
                 return true;
             }
             else
@@ -39,17 +39,17 @@ namespace AnimalShelter
             }
         }
 
-        private Dog _MyDog;
-        public Dog MyDog
+        private List<Dog> _MyDogs = new List<Dog>();
+        public List<Dog> MyDogs
         {
-            get { return _MyDog; }
+            get { return _MyDogs; }
         }
 
         public bool Adopt(Dog dog)
         {
             if (_IsQulified)
             {
-                _MyDog = dog;
+                _MyDogs.Add(dog);
                 return true;
             }
             else

@@ -6,35 +6,27 @@ using System.Threading.Tasks;
 
 namespace AnimalShelter
 {
-
-    public enum DogBreed {Mixed, Bulldog, Yorkshire, Jindo}
-    public class Dog
+    public class Pet
     {
         public int PetId;
         public string Name;
         public string Color;
         public string Gender;
         public string Description;
-        public DogBreed Breed;
 
-        public Dog(int petId, string name, string color, string gender, DogBreed breed)
+        public Pet(int petId, string name, string color, string gender)
         {
             PetId = petId;
             Name = name;
             Color = color;
             Gender = gender;
-            Breed = breed;
         }
 
-        public string MakeSound()
+        public virtual string MakeSound()
         {
-            return "멍멍";
+            return "";
         }
 
-        public string Bite()
-        {
-            return "물어뜯기";
-        }
 
     }
 }

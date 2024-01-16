@@ -92,11 +92,12 @@ namespace AnimalShelter
             CusDescription.Text = cus.Description;
             CusIsQualified.Text = cus.IsQulified.ToString();
 
-            if (cus.MyCat != null)
-                CusPetInfo.Text = cus.MyCat.Name + " : " + cus.MyCat.MakeSound() + Environment.NewLine;
+            CusPetInfo.Text = "";
+            foreach(Cat cat in cus.MyCats)
+                CusPetInfo.Text += cat.Name + " : " + cat.MakeSound() + Environment.NewLine;
 
-            if (cus.MyDog != null)
-                CusPetInfo.Text = cus.MyDog.Name + " : " + cus.MyDog.MakeSound();
+            foreach(Dog dog in cus.MyDogs)
+                CusPetInfo.Text += dog.Name + " : " + dog.MakeSound() + Environment.NewLine;
         }
 
         private void CusList_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -136,6 +137,8 @@ namespace AnimalShelter
             Customer cus = new Customer("Ian", "Na", new DateTime(1990, 1, 2));
             Cat cat = new Cat(1, "Lucas", "White", "Male");
             cus.Adopt(cat);
+            Cat cat2 = new Cat(3, "Ruby", "Brawn", "Male");
+            cus.Adopt(cat2);
 
             Dog dog = new Dog(2, "Happy", "Black", "Male", DogBreed.Yorkshire);
             cus.Adopt(dog);

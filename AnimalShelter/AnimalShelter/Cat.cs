@@ -33,8 +33,5 @@ namespace AnimalShelter
             return "할퀴기";
         }
 
-
-
-
     }
 }
