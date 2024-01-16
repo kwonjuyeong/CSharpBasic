@@ -6,24 +6,17 @@ using System.Threading.Tasks;
 
 namespace AnimalShelter
 {
-    public class Cat
+    //pet클래스를 상속한다 : Pet
+    public class Cat : Pet
     {
-        //유니크한 펫 고유의 아이디
-        public int PetId;
-        public string Name;
-        public string Color;
-        public string Gender;
-        public string Description;
-
-        public Cat(int petId,string name, string color, string gender)
+        //base를 사용함으로써 Pet 생성자에서 받아올 수 있다.
+        public Cat(int petId, string name, string color, string gender) 
+            : base(petId, name, color, gender)
         {
-            PetId = petId;  
-            Name = name;
-            Color = color;
-            Gender = gender;
         }
 
-        public string MakeSound()
+        //override를 통해 virtual을 재정의한다.
+        public override string MakeSound()
         {
             return "야옹";
         }

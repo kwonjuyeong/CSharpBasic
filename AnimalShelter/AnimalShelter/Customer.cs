@@ -13,13 +13,14 @@ namespace AnimalShelter
     {
         public string FirstName;
         public string LastName;
+        //age에 따라 조건이 생성되기 때문에 private로 변수에 접근하지 못하게 만든다.
         private DateTime _Birthday;
-        //age에 따라 조건이 생성되기 때문에 private로 변수에 접근을 하지 못하게 만든다.
-        //cus.IsQulified = true로 생성이 될 수 있다.(public 사용 시)
+        //public 사용 시 cus.IsQulified = true로 생성 될 수 있다.
         private bool _IsQulified;
         public string Address;
         public string Description;
 
+        /*
         private List<Cat> _MyCats = new List<Cat>();
         public List<Cat> MyCats
         {
@@ -57,7 +58,26 @@ namespace AnimalShelter
                 return false;
             }
         }
+        */
 
+        private List<Pet> _MyPets = new List<Pet>();
+        public List<Pet> MyPets
+        {
+            get {return  _MyPets;}
+        }
+
+        public bool Adopt(Pet pet)
+        {
+            if (_IsQulified)
+            {
+                _MyPets.Add(pet);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public Customer(string firstName, string lastName, DateTime birthday)
         {

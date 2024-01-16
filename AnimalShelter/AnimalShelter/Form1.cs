@@ -93,11 +93,31 @@ namespace AnimalShelter
             CusIsQualified.Text = cus.IsQulified.ToString();
 
             CusPetInfo.Text = "";
-            foreach(Cat cat in cus.MyCats)
-                CusPetInfo.Text += cat.Name + " : " + cat.MakeSound() + Environment.NewLine;
 
-            foreach(Dog dog in cus.MyDogs)
-                CusPetInfo.Text += dog.Name + " : " + dog.MakeSound() + Environment.NewLine;
+            /*
+           foreach(Cat cat in cus.MyCats)
+               CusPetInfo.Text += cat.Name + " : " + cat.MakeSound() + Environment.NewLine;
+
+           foreach(Dog dog in cus.MyDogs)
+               CusPetInfo.Text += dog.Name + " : " + dog.MakeSound() + Environment.NewLine;
+           */
+            foreach (Pet pet in cus.MyPets)
+            {
+                CusPetInfo.Text += pet.Name + " : " + pet.MakeSound();
+
+                //is 연산자 = bool을 return 한다.
+                if (pet is Cat)
+                {
+                    CusPetInfo.Text += " : " + (pet as Cat).Scratch();
+                }
+                else if(pet is Dog)
+                {
+                    CusPetInfo.Text += " : " + (pet as Dog).Bite();
+                }
+
+                CusPetInfo.Text += Environment.NewLine;
+
+            }
         }
 
         private void CusList_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -145,6 +165,9 @@ namespace AnimalShelter
 
             Customers.Add(cus);
             CusList.Rows.Add(cus.FirstName, cus.Age, cus.IsQulified);
+
+           
+
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)

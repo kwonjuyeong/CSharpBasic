@@ -8,6 +8,7 @@ namespace AnimalShelter
 {
     public class Pet
     {
+        //유니크한 펫 고유의 아이디 => 필드를 각각 호출이 아닌 상속을 해준다
         public int PetId;
         public string Name;
         public string Color;
@@ -22,6 +23,8 @@ namespace AnimalShelter
             Gender = gender;
         }
 
+
+        //virtual : 필요하면 재정의 하라는 뜻
         public virtual string MakeSound()
         {
             return "";
