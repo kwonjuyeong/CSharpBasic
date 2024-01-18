@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BabyCarrotLib")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+67cc78c73043bb8e8608141cea94d9f35d2e1a7d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("BabyCarrotLib")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BabyCarrotLib")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

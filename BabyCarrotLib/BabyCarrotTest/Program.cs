@@ -1,9 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using BabyCarrotLib.Tools;
+using BabyCarrotLib.Extensions;
 
+
+/*
 LogManager log = new LogManager(null, "_BabyCarrotText");
-
 
 log.WriteLine("[Begin Processing]-----");
 
@@ -17,3 +19,9 @@ log.WriteLine("[Begin Processing]-----");
     }
 
 log.WriteLine("[End Processing]-----");
+*/
+
+string temp = "12/08/2015 10:10";
+
+Console.WriteLine("IsNumeric? : " + temp.IsNumeric());
+Console.WriteLine("IsDateTime? : " + temp.IsDateTime());

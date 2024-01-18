@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BabyCarrotTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+67cc78c73043bb8e8608141cea94d9f35d2e1a7d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ccab0fa8a756e8dbdeab600841c96e2a9b6214a2")]
 [assembly: System.Reflection.AssemblyProductAttribute("BabyCarrotTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BabyCarrotTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
