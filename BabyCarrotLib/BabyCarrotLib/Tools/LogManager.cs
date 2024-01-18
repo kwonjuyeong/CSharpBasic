@@ -11,6 +11,7 @@ namespace BabyCarrotLib.Tools
     {
         private string _path;
 
+
         #region Constructors
         public LogManager(string path)
         {
@@ -20,13 +21,8 @@ namespace BabyCarrotLib.Tools
 
         public LogManager() : this(Path.Combine(Application.Root, "Log")) { 
         
-        
-        
         }
-            
-            #endregion
-
-
+        #endregion
 
         #region Methods
         private void _SetLogPath()
@@ -39,15 +35,28 @@ namespace BabyCarrotLib.Tools
 
         }
 
-
         public void Write(string data)
         {
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(_path, true))
+                {
+                    writer.Write(data);
+                }
 
+            }catch (Exception ex)
+            { }
         }
 
         public void WriteLine(string data)
         {
-
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(_path, true))
+                {
+                    writer.WriteLine(DateTime.Now.ToString("yyyyMMdd HH:mm:ss\t") + data);
+                }
+            } catch (Exception ex) { }
         }
         #endregion
 
