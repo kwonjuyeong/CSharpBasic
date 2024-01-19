@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BabyCarrotLib", "BabyCarrotLib\BabyCarrotLib.csproj", "{6612B01F-69B5-45D1-8778-C04A1E383671}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BabyCarrotLib", "BabyCarrotLib\BabyCarrotLib.csproj", "{6612B01F-69B5-45D1-8778-C04A1E383671}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BabyCarrotTest", "BabyCarrotTest\BabyCarrotTest.csproj", "{2D055727-C11F-48A3-8658-24A7503C3E2D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BabyCarrotTest", "BabyCarrotTest\BabyCarrotTest.csproj", "{8A7DCF3C-9E21-49AA-9EA6-FF9F001C2930}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{6612B01F-69B5-45D1-8778-C04A1E383671}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6612B01F-69B5-45D1-8778-C04A1E383671}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6612B01F-69B5-45D1-8778-C04A1E383671}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D055727-C11F-48A3-8658-24A7503C3E2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D055727-C11F-48A3-8658-24A7503C3E2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D055727-C11F-48A3-8658-24A7503C3E2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D055727-C11F-48A3-8658-24A7503C3E2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A7DCF3C-9E21-49AA-9EA6-FF9F001C2930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A7DCF3C-9E21-49AA-9EA6-FF9F001C2930}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A7DCF3C-9E21-49AA-9EA6-FF9F001C2930}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A7DCF3C-9E21-49AA-9EA6-FF9F001C2930}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

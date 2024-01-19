@@ -1,0 +1,5 @@
+C:\Users\kjy1h\source\repos\BabyCarrotLib\BabyCarrotLib\obj\Debug\net5.0\BabyCarrotLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kjy1h\source\repos\BabyCarrotLib\BabyCarrotLib\obj\Debug\net5.0\BabyCarrotLib.AssemblyInfoInputs.cache
+C:\Users\kjy1h\source\repos\BabyCarrotLib\BabyCarrotLib\obj\Debug\net5.0\BabyCarrotLib.AssemblyInfo.cs
+C:\Users\kjy1h\source\repos\BabyCarrotLib\BabyCarrotLib\obj\Debug\net5.0\BabyCarrotLib.csproj.CoreCompileInputs.cache
+C:\Users\kjy1h\source\repos\BabyCarrotLib\BabyCarrotLib\obj\Debug\net5.0\BabyCarrotLib.sourcelink.json

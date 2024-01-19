@@ -1,0 +1,10 @@
+C:\Users\kjy1h\source\repos\BabyCarrotLib\BabyCarrotLib\obj\Debug\net472\BabyCarrotLib.csproj.AssemblyReference.cache
+C:\Users\kjy1h\source\repos\BabyCarrotLib\BabyCarrotLib\obj\Debug\net472\BabyCarrotLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kjy1h\source\repos\BabyCarrotLib\BabyCarrotLib\obj\Debug\net472\BabyCarrotLib.AssemblyInfoInputs.cache
+C:\Users\kjy1h\source\repos\BabyCarrotLib\BabyCarrotLib\obj\Debug\net472\BabyCarrotLib.AssemblyInfo.cs
+C:\Users\kjy1h\source\repos\BabyCarrotLib\BabyCarrotLib\obj\Debug\net472\BabyCarrotLib.csproj.CoreCompileInputs.cache
+C:\Users\kjy1h\source\repos\BabyCarrotLib\BabyCarrotLib\obj\Debug\net472\BabyCarrotLib.sourcelink.json
+C:\Users\kjy1h\source\repos\BabyCarrotLib\BabyCarrotLib\bin\Debug\net472\BabyCarrotLib.dll
+C:\Users\kjy1h\source\repos\BabyCarrotLib\BabyCarrotLib\bin\Debug\net472\BabyCarrotLib.pdb
+C:\Users\kjy1h\source\repos\BabyCarrotLib\BabyCarrotLib\obj\Debug\net472\BabyCarrotLib.dll
+C:\Users\kjy1h\source\repos\BabyCarrotLib\BabyCarrotLib\obj\Debug\net472\BabyCarrotLib.pdb

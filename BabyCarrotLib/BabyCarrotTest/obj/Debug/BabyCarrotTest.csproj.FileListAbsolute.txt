@@ -1,0 +1,2 @@
+C:\Users\kjy1h\source\repos\BabyCarrotLib\BabyCarrotTest\obj\Debug\BabyCarrotTest.csproj.AssemblyReference.cache
+C:\Users\kjy1h\source\repos\BabyCarrotLib\BabyCarrotTest\obj\Debug\BabyCarrotTest.csproj.CoreCompileInputs.cache
