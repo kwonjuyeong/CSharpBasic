@@ -10,11 +10,10 @@ using BabyCarrotLib.Extensions;
 
 namespace BabyCarrotTest
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-
             /*
             LogManager log = new LogManager(null, "_BabyCarrotText");
 
@@ -32,13 +31,15 @@ namespace BabyCarrotTest
             log.WriteLine("[End Processing]-----");
             */
 
+            /*
             string temp = "12/08/2015 10:10";
 
             Console.WriteLine("IsNumeric? : " + temp.IsNumeric());
             Console.WriteLine("IsDateTime? : " + temp.IsDateTime());
+            */
 
-
-            EmailManager.Send(ToString, subject, contents);
+            string contents = "Hello there, <br /> This is Juyeong";
+            EmailManager.Send("receiver@test.com", "Hi...", contents);
 
 
         }

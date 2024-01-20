@@ -17,7 +17,13 @@ namespace BabyCarrotLib.Tools
             string sender = ConfigurationManager.AppSettings["SMTPSender"];
 
             string smtpHost = ConfigurationManager.AppSettings["SMTPHost"];
-            int smtpPort = Convert.ToInt32(ConfigurationManager.AppSettings["SMTPPost"]);
+
+            int smtpPort = 0;
+
+            //조건에 맞지 않으면 기본 포트 부여
+            if (ConfigurationManager.AppSettings["SMTPPort"] == null || int.TryParse(ConfigurationManager.AppSettings["SMTPPort"], out smtpPort) == false)
+                smtpPort = 25;
+
 
             //Host와 Port번호로 아무나 와서 스팸 메일을 계속해서 보낸다면 블랙 리스트에 올라 해당 서버에서 전송되는 메일이 차단되게 되는 현상을 막기 위함. 
             string smtpId = ConfigurationManager.AppSettings["SMTPID"]; ;
