@@ -14,7 +14,7 @@ namespace BabyCarrotTest
     {
         static void Main(string[] args)
         {
-            /*
+            /* 로그 매니저 호출
             LogManager log = new LogManager(null, "_BabyCarrotText");
 
             log.WriteLine("[Begin Processing]-----");
@@ -38,8 +38,26 @@ namespace BabyCarrotTest
             Console.WriteLine("IsDateTime? : " + temp.IsDateTime());
             */
 
+
+            //Email Manager 호출
             string contents = "Hello there, <br /> This is Juyeong";
-            EmailManager.Send("receiver@test.com", "Hi...", contents);
+
+            EmailManager email = new EmailManager("smtp.com", 25, "id", "password");
+            email.From = "sender@test.com";
+            email.To.Add("receiver@test.com");
+            email.Subject = "Subject";
+            email.Body = contents;
+            email.Send();
+
+            /*
+            email.To.Clear();
+            email.To.Add("receiver2@test.com");
+            email.Subject = "Hi, J";
+            email.Send();
+            */
+
+
+
 
 
         }
